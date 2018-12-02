@@ -7,3 +7,7 @@ ScrollReveal().reveal(
         easing: 'ease-in'
     }
 );
+
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})
