@@ -34,6 +34,10 @@
     background-color: darkgrey;
 }
 
+.titulo-h2 {
+    font-size: 2rem;
+}
+
 @media (max-width: 768px) {
     .sidebar {
         margin-left: -250px;
