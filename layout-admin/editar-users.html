@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="pt-br">
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+        <link rel="stylesheet" href="css/styles.css">
+        <link rel="icon" href="img/favicon.ico">
+
+        <title>dalfre soluções</title>
+
+    </head>
+    <body>
+
+        <header>
+            <nav class="navbar navbar-expand navbar-dark bg-dark">
+                <a class="sidebar-toogle text-light mr-3">
+                    <i class="fas fa-bars fa-lg"></i>
+                </a>
+                <div class="container-fluid">
+                    <a class="navbar-brand w-25" href="#">
+                        <img src="img/logo-dalfre.png" class="img-fluid">
+                    </a>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            danrlei
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown">
+                            <button class="dropdown-item" type="button"><i class="fas fa-user-circle"></i> perfil</button>
+                            <button class="dropdown-item" type="button"><i class="fas fa-sign-out-alt"></i> sair</button>
+                        </div>
+                    </div>
+                </div>            
+            </nav>
+        </header>
+
+        <aside>
+            <div class="d-flex">
+                <nav class="sidebar bg-dark">
+                    <ul class="list-unstyled">
+                        <li><a href=""><i class="fas fa-tachometer-alt fa-lg"></i> dashboard</a></li>
+                        <li>
+                            <a href="#usersubmenu" data-toggle="collapse">
+                                <i class="fas fa-users fa-lg"></i>
+                                usuários
+                                <i class="mt-1 float-right fas fa-caret-down"></i>
+                            </a>
+                            <ul id="usersubmenu" class="list-unstyled collapse">
+                                <li class="active"><a href=""><i class="ml-3 fas fa-user"></i> usuário</a></li>
+                                <li><a href=""><i class="ml-3 fas fa-key"></i> nível de acesso</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#menusubmenu" data-toggle="collapse">
+                                <i class="fas fa-list fa-lg"></i>
+                                menu
+                                <i class="mt-1 float-right fas fa-caret-down"></i>
+                            </a>
+                            <ul id="menusubmenu" class="list-unstyled collapse">
+                                <li><a href=""><i class="ml-3 fas fa-window-restore"></i> páginas</a></li>
+                                <li><a href=""><i class="ml-3 fas fa-stream"></i> itens de menu</a></li>
+                            </ul>
+                        </li>
+                        <li><a href=""><i class="fas fa-sign-out-alt fa-lg"></i> sair</a></li>
+                    </ul>
+                </nav>
+
+                
+                <div class="content p-1 w-100">
+                    <div class="list-group-item">
+                        <div class="d-flex">
+                            <div class="mr-auto p-2">
+                                <h2 class="titulo-h2">editar usuários</h2>
+                            </div>
+                        </div>
+                        <form>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <input type="text" class="form-control" id="nome" name="nome" placeholder="* seu nome completo">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <input type="email" class="form-control" id="e-mail" name="e-mail" placeholder="* seu e-mail">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <input type="password" class="form-control" id="senha" name="senha" placeholder="* defina sua senha (mínimo 6 caracteres)">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <input type="password" class="form-control" id="senha-confirm" name="senha-confirm" placeholder="* confirme sua senha">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-8">
+                                    <input type="text" class="form-control" id="endereco" name="endereco" placeholder="seu endereço">
+                                </div>
+                                <div class="form-group col-md-1">
+                                    <input type="text" class="form-control" id="numero" name="numero" placeholder="nº">
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <input type="text" class="form-control" id="complemento" name="complemento" placeholder="complemento">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <input type="text" class="form-control" id="cidade" name="cidade" placeholder="sua cidade">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <select id="estado" name="estado" class="form-control">
+                                        <option selected>selecione o estado</option>
+                                        <option>PR</option>
+                                        <option>SC</option>
+                                        <option>RS</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <input type="text" class="form-control" id="cep" name="cep" placeholder="seu CEP">
+                                </div>
+                            </div>
+                            <span class="text-danger">* campos obrigatórios</span>
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <button type="submit" class="btn btn-lg btn-block btn-outline-warning mt-2"><i class="fas fa-check-square"></i> salvar</button>            
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <a href="apagar-users.html" class="btn btn-lg btn-block btn-outline-danger mt-2" data-toggle="modal" data-target="#apagar-user">
+                                        <i class="fas fa-user-times"></i> apagar
+                                    </a>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <a href="listar-users.html" class="btn btn-lg btn-block btn-outline-secondary mt-2"><i class="fas fa-ban"></i> cancelar</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </aside>        
+
+        <footer class="fixed-bottom">
+            <div class="footer text-center py-4 bg-dark text-white">
+                dalfre <i class="fas fa-code fa-sm"></i> soluções
+            </div>
+        </footer>
+
+        <div class="modal fade" id="apagar-user" tabindex="-1" role="dialog" aria-labelledby="apagar-user" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="apagar-user">apagar registro</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <h6>Tem certeza que deseja deletar este registro?</h6>
+                </div>
+                <div class="modal-footer mx-auto">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                        <i class="fas fa-times-circle"></i> não
+                    </button>
+                    <button type="button" class="btn btn-warning">
+                        <i class="fas fa-check"></i> sim
+                    </button>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="https://unpkg.com/scrollreveal"></script>
+        <script src="js/scripts.js"></script>
+    </body>
+</html>
