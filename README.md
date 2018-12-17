@@ -3,3 +3,4 @@
 <p><a href="http://www.php.net/">PHP7</a></p>
 <p><a href="https://www.mysql.com/">MySQL</a></p>
 <p><a href="http://getbootstrap.com">Bootstrap</a></p>
+<p><a href="https://getcomposer.org/">Composer</a></p>
