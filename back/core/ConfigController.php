@@ -31,7 +31,7 @@ class ConfigController {
             echo "URL: {$this->Url} <br>";
             echo "Controller: {$this->UrlController} <br>";
         } else {
-            $this->UrlController = "Home";
+            $this->UrlController = CONTROLLER;
             $this->UrlParametro = null;
         }        
     }

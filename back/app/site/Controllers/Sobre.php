@@ -2,6 +2,11 @@
 
 namespace Site\Controllers;
 
+if (!defined('URL')) {
+    header('Location: /');
+    exit();
+}
+
 class Sobre {
 
     public function index() {
