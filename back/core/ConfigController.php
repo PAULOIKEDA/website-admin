@@ -29,7 +29,7 @@ class ConfigController {
             }
 
             echo "URL: {$this->Url} <br>";
-            echo "Controller: {$this->UrlController}";
+            echo "Controller: {$this->UrlController} <br>";
         } else {
             $this->UrlController = "Home";
             $this->UrlParametro = null;
@@ -53,6 +53,12 @@ class ConfigController {
         $UrlController = ucwords($UrlController);
         $UrlController = str_replace(" ", "", $UrlController);
         return $UrlController;
+    }
+
+    public function carregar() {
+        $classe = "\\Site\\Controllers\\" . $this->UrlController;
+        $classeCarregar = new $classe;
+        $classeCarregar->index();
     }
 
 }
