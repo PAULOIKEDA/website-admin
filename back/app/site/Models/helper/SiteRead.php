@@ -33,6 +33,14 @@ class SiteRead extends SiteConn {
     private function exeInstrucao() {
 
         $this->conexao();
+        try {
+            $this->getInstrucao();
+            $this->Query->execute();
+            $this->Resultado = $this->Query->fetchAll();
+            var_dump($this->Resultado);
+        } catch (Exception $ex) {
+            $this->Resultado = null;
+        }
 
     }
 
@@ -41,6 +49,23 @@ class SiteRead extends SiteConn {
         $this->Conn = parent::getConn();
         $this->Query = $this->Conn->prepare($this->Select);
         $this->Query->setFetchMode(PDO::FETCH_ASSOC);
+
+    }
+
+    public function getInstrucao() {
+
+        if ($this->Values) {
+            foreach ($this->Values as $Link => $Valor) {
+                if ($Link == 'limit' || $Link == 'offset') {
+                    $Valor = (int) $Valor;
+                }
+                $this->Query->bindValue(
+                    ":{$Link}",
+                    $Valor,
+                    (is_int($Valor) ? PDO::PARAM_INT : PDO::PARAM_STR)
+                );
+            }
+        }
 
     }
 

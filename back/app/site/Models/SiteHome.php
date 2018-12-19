@@ -17,7 +17,7 @@ class SiteHome {
         $listar->exeRead(
             'carousels',
             'WHERE estado_id =: estado_id LIMIT :limit',
-            'estado_id = 1 & limit=4'
+            'estado_id = 1&limit=4'
         );
     }
 
