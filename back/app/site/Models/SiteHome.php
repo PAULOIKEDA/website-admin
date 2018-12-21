@@ -9,6 +9,8 @@ if (!defined('URL')) {
 
 class SiteHome {
 
+    private $Resultado;
+
     public function index() {
         //echo "Listar dados <br>";
         //$conexao = new \Site\Models\helper\SiteConn();
@@ -16,9 +18,11 @@ class SiteHome {
         $listar = new \Site\Models\helper\SiteRead();
         $listar->exeRead(
             'carousels',
-            'WHERE estado_id =: estado_id LIMIT :limit',
-            'estado_id = 1&limit=4'
+            'WHERE estado_id =:estado_id LIMIT :limit',
+            'estado_id=1&limit=4'
         );
+        $this->Resultado['carousels'] = $listar->getResultado();
+        return $this->Resultado['carousels'];
     }
 
 }

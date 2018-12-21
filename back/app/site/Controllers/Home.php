@@ -9,11 +9,13 @@ if (!defined('URL')) {
 
 class Home {
 
+    private $Dados;
+
     public function index() {
         $home = new \Site\Models\SiteHome();
-        $home->index();
+        $this->Dados = $home->index();
 
-        $carregarView = new \Core\ConfigView("site/Views/home/home");
+        $carregarView = new \Core\ConfigView("site/Views/home/home", $this->Dados);
         $carregarView->renderizar();
     }    
 

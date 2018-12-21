@@ -7,9 +7,9 @@ class ConfigView {
     private $Nome;
     private $Dados;
 
-    public function __construct($Nome, arra $Dados = null) {
+    public function __construct($Nome, array $Dados = null) {
         $this->Nome = (string) $Nome;
-        $this->Dados = (string) $Dados;
+        $this->Dados = $Dados;
     }
 
     public function renderizar() {

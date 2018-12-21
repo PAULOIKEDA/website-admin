@@ -37,7 +37,6 @@ class SiteRead extends SiteConn {
             $this->getInstrucao();
             $this->Query->execute();
             $this->Resultado = $this->Query->fetchAll();
-            var_dump($this->Resultado);
         } catch (Exception $ex) {
             $this->Resultado = null;
         }
@@ -58,12 +57,14 @@ class SiteRead extends SiteConn {
             foreach ($this->Values as $Link => $Valor) {
                 if ($Link == 'limit' || $Link == 'offset') {
                     $Valor = (int) $Valor;
+                    
                 }
                 $this->Query->bindValue(
                     ":{$Link}",
                     $Valor,
                     (is_int($Valor) ? PDO::PARAM_INT : PDO::PARAM_STR)
-                );
+                    
+                );                
             }
         }
 
