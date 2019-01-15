@@ -30,6 +30,14 @@ class SiteRead extends SiteConn {
         $this->exeInstrucao();
     }
 
+    public function fullRead($Query, $ParseString = null) {
+        $this->Select = (string) $Query;
+        if (!empty($ParseString)) {
+            parse_str($ParseString, $this->Values);
+        }
+        $this->exeInstrucao();
+    }
+
     private function exeInstrucao() {
 
         $this->conexao();
