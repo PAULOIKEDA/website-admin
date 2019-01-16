@@ -16,6 +16,7 @@ class ConfigView {
 
         if (file_exists('app/' . $this->Nome . '.php')) {
             include 'app/site/Views/include/cabecalho.php';
+            include 'app/site/Views/include/menu.php';
             include 'app/' . $this->Nome . '.php';
             include 'app/site/Views/include/rodape.php';
         } else {
