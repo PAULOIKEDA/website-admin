@@ -26,7 +26,7 @@ class SiteRead extends SiteConn {
             parse_str($ParseString, $this->Values);
         }
         $this->Select = "SELECT * FROM {$Tabela} {$Termos}";
-        echo "{$this->Select}";
+        //echo "{$this->Select}";
         $this->exeInstrucao();
     }
 

@@ -12,8 +12,8 @@ class Home {
     private $Dados;
 
     public function index() {
-        $home = new \Site\Models\SiteHome();
-        $this->Dados = $home->index();
+        $listar_carousel = new \Site\Models\Carousel();
+        $this->Dados['carousels'] = $listar_carousel->listar();
 
         $carregarView = new \Core\ConfigView("site/Views/home/home", $this->Dados);
         $carregarView->renderizar();
