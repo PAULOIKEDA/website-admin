@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Tempo de geração: 15/01/2019 às 23:41
+-- Tempo de geração: 16/01/2019 às 22:42
 -- Versão do servidor: 10.1.37-MariaDB-0+deb9u1
 -- Versão do PHP: 7.3.1-1+0~20190113101756.25+stretch~1.gbp15aaa9
 
@@ -78,6 +78,35 @@ INSERT INTO `cores` (`id`, `nome`, `cor`, `created`, `modified`) VALUES
 (7, 'Branco', 'light', '2019-01-15 00:00:00', NULL),
 (8, 'Preto', 'dark', '2019-01-15 00:00:00', NULL);
 
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `solucoes`
+--
+
+CREATE TABLE `solucoes` (
+  `id` int(11) NOT NULL,
+  `titulo` varchar(250) NOT NULL,
+  `icone_1` varchar(40) NOT NULL,
+  `nome_1` varchar(120) NOT NULL,
+  `descricao_1` varchar(220) NOT NULL,
+  `icone_2` varchar(40) NOT NULL,
+  `nome_2` varchar(120) NOT NULL,
+  `descricao_2` varchar(220) NOT NULL,
+  `icone_3` varchar(40) NOT NULL,
+  `nome_3` varchar(120) NOT NULL,
+  `descricao_3` varchar(220) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Fazendo dump de dados para tabela `solucoes`
+--
+
+INSERT INTO `solucoes` (`id`, `titulo`, `icone_1`, `nome_1`, `descricao_1`, `icone_2`, `nome_2`, `descricao_2`, `icone_3`, `nome_3`, `descricao_3`, `created`, `modified`) VALUES
+(1, 'soluÃ§Ãµes', 'file-code', 'soluÃ§Ãµes 1', 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.', 'edit', 'soluÃ§Ãµes 2', 'This card has supporting text below as a natural lead-in to additional content.', 'window-restore', 'soluÃ§Ãµes 3', 'This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.', '2019-01-16 00:00:00', NULL);
+
 --
 -- Índices de tabelas apagadas
 --
@@ -95,6 +124,12 @@ ALTER TABLE `cores`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Índices de tabela `solucoes`
+--
+ALTER TABLE `solucoes`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT de tabelas apagadas
 --
 
@@ -108,6 +143,11 @@ ALTER TABLE `carousels`
 --
 ALTER TABLE `cores`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT de tabela `solucoes`
+--
+ALTER TABLE `solucoes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
