@@ -44,3 +44,5 @@
         </a>
     </div>
 </section>
+
+<?php echo($this->Dados['solucoes']); ?>
