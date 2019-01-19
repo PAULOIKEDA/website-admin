@@ -76,3 +76,19 @@
         </div>
     </div>
 </section>
+
+<?php extract($this->Dados['videos'][0]) ?>
+<section>
+    <div class="jumbotron rounded-0 mb-0">
+        <div class="container animation">
+            <h2 class="text-center mb-5"><?php echo $titulo; ?></h2>
+            <div class="row justify-content-md-center">
+                <div class="col-12 col-md-8">
+                    <div class="embed-responsive embed-responsive-16by9">
+                    <?php echo $video; ?>
+                    </div>
+                </div>
+            </div>                      
+        </div>
+    </div>
+</section>

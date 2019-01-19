@@ -18,6 +18,9 @@ class Home {
         $listar_solucao = new \Site\Models\SiteSolucao();
         $this->Dados['solucoes'] = $listar_solucao->listar();
 
+        $listar_video = new \Site\Models\SiteVideo();
+        $this->Dados['videos'] = $listar_video->listar();
+
         $carregarView = new \Core\ConfigView("site/Views/home/home", $this->Dados);
         $carregarView->renderizar();
     }    
