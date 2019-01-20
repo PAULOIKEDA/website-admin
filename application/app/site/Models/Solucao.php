@@ -7,7 +7,7 @@ if (!defined('URL')) {
     exit();
 }
 
-class SiteSolucao {
+class Solucao {
 
     private $Resultado;
 

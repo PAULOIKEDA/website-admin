@@ -92,3 +92,30 @@
         </div>
     </div>
 </section>
+
+<section>
+    <div class="jumbotron rounded-0 mb-0">
+        <div class="container">
+            <h2 class="text-center mb-5">últimas do blog</h2>
+            <div class="card-deck">
+                <?php foreach ($this->Dados['blog'] as $blog){
+                    extract($blog);
+                ?>
+                    <div class="card animation">
+                        <img class="card-img-top" src="<?php echo URL . 'app/assets/img/blog/'.$id.'/'.$imagem; ?>" alt="<?php echo $titulo; ?>">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $titulo; ?></h5>
+                            <p class="card-text"><?php echo $descricao; ?></p>
+                            <a class="btn btn-primary" href="<?php echo URL . 'blog'.$slug; ?>" role="button">+ ver mais</a>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                        </div>
+                    </div>
+                <?php
+                }
+                ?>
+            </div>                    
+        </div>
+    </div>
+</section>

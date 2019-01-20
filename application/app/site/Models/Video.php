@@ -7,7 +7,7 @@ if (!defined('URL')) {
     exit();
 }
 
-class SiteVideo {
+class Video {
 
     private $Resultado;
 
