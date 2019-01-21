@@ -9,8 +9,13 @@ if (!defined('URL')) {
 
 class Contato {
 
+    private $Dados;
+
     public function index() {
-        echo "Página Contato <br>";
+        $this->Dados = ['nome' => 'Danrlei', 'email' => 'danrlei@gmail.com', 'endereco' => 'Rua ...', 'cidade' => 'ibiporã', 'estado' => 'PR', 'cep' => '86200000', 'mensagem' => 'Olá, desejo orçamento de um site', 'created' => date('Y-m-d H:i:s')];
+        //var_dump($this->Dados);
+        $cadastro = new \Site\Models\Contato();
+        $cadastro->cadastrarContato($this->Dados);
     }
 
 }
