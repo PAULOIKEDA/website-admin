@@ -9,8 +9,14 @@ if (!defined('URL')) {
 
 class Sobre {
 
+    private $Dados;
+
     public function index() {
-        echo "Página Sobre <br>";
+        $listar_sobre = new \Site\Models\Sobre();
+        $this->Dados['sobre'] = $listar_sobre->listar();
+
+        $carregarView = new \Core\ConfigView("site/Views/sobre/sobre", $this->Dados);
+        $carregarView->renderizar();
     }
 
 }
