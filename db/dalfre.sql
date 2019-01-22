@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Tempo de geração: 20/01/2019 às 20:02
+-- Tempo de geração: 21/01/2019 às 23:32
 -- Versão do servidor: 10.1.37-MariaDB-0+deb9u1
 -- Versão do PHP: 7.3.1-1+0~20190113101756.25+stretch~1.gbp15aaa9
 
@@ -186,6 +186,25 @@ INSERT INTO `categorias_blog` (`id`, `nome`, `created`, `modified`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estrutura para tabela `contatos`
+--
+
+CREATE TABLE `contatos` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(220) NOT NULL,
+  `email` varchar(220) NOT NULL,
+  `endereco` text NOT NULL,
+  `cidade` varchar(120) NOT NULL,
+  `estado` varchar(20) NOT NULL,
+  `cep` varchar(20) NOT NULL,
+  `mensagem` text NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura para tabela `cores`
 --
 
@@ -210,6 +229,36 @@ INSERT INTO `cores` (`id`, `nome`, `cor`, `created`, `modified`) VALUES
 (6, 'Turquesa', 'info', '2019-01-15 00:00:00', NULL),
 (7, 'Branco', 'light', '2019-01-15 00:00:00', NULL),
 (8, 'Preto', 'dark', '2019-01-15 00:00:00', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `sobre`
+--
+
+CREATE TABLE `sobre` (
+  `id` int(11) NOT NULL,
+  `titulo` varchar(220) NOT NULL,
+  `descricao` text NOT NULL,
+  `icone_1` varchar(40) NOT NULL,
+  `nome_1` varchar(120) NOT NULL,
+  `descricao_1` text NOT NULL,
+  `icone_2` varchar(40) NOT NULL,
+  `nome_2` varchar(120) NOT NULL,
+  `descricao_2` text NOT NULL,
+  `icone_3` varchar(40) NOT NULL,
+  `nome_3` varchar(120) NOT NULL,
+  `descricao_3` text NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Fazendo dump de dados para tabela `sobre`
+--
+
+INSERT INTO `sobre` (`id`, `titulo`, `descricao`, `icone_1`, `nome_1`, `descricao_1`, `icone_2`, `nome_2`, `descricao_2`, `icone_3`, `nome_3`, `descricao_3`, `created`, `modified`) VALUES
+(1, 'sobre', 'This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.', 'check-circle fa-10x', 'missão', 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.', 'handshake fa-10x', 'valores', 'This card has supporting text below as a natural lead-in to additional content.', 'eye fa-10x', 'visão', 'This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.', '2019-01-20 00:00:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -324,9 +373,21 @@ ALTER TABLE `categorias_blog`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Índices de tabela `contatos`
+--
+ALTER TABLE `contatos`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices de tabela `cores`
 --
 ALTER TABLE `cores`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices de tabela `sobre`
+--
+ALTER TABLE `sobre`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -382,10 +443,20 @@ ALTER TABLE `carousels`
 ALTER TABLE `categorias_blog`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
+-- AUTO_INCREMENT de tabela `contatos`
+--
+ALTER TABLE `contatos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+--
 -- AUTO_INCREMENT de tabela `cores`
 --
 ALTER TABLE `cores`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT de tabela `sobre`
+--
+ALTER TABLE `sobre`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de tabela `solucoes`
 --

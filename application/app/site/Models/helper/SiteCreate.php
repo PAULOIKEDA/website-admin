@@ -39,6 +39,10 @@ class SiteCreate extends SiteConn {
     }
   }
 
+  function getResultado() {
+    return $this->Resultado;
+  }
+
   private function conexao() {
 
     $this->Conn = parent::getConn();

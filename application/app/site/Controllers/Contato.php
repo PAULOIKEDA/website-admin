@@ -12,10 +12,18 @@ class Contato {
     private $Dados;
 
     public function index() {
-        $this->Dados = ['nome' => 'Danrlei', 'email' => 'danrlei@gmail.com', 'endereco' => 'Rua ...', 'cidade' => 'ibiporã', 'estado' => 'PR', 'cep' => '86200000', 'mensagem' => 'Olá, desejo orçamento de um site', 'created' => date('Y-m-d H:i:s')];
-        //var_dump($this->Dados);
-        $cadastro = new \Site\Models\Contato();
-        $cadastro->cadastrarContato($this->Dados);
+
+        $this->Dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+
+        if (!empty($this->Dados['EnviaContato'])) {
+            unset($this->Dados['EnviaContato']);
+            $cadastro = new \Site\Models\Contato();
+            $cadastro->cadastrarContato($this->Dados);
+            $this->Dados['form'] = $this->Dados;
+        }     
+
+        $carregarView = new \Core\ConfigView("site/Views/contato/contato", $this->Dados);
+        $carregarView->renderizar();
     }
 
 }

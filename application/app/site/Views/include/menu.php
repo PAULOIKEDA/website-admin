@@ -10,19 +10,19 @@
             <div class="collapse navbar-collapse" id="navbarToggler">
                 <ul class="navbar-nav ml-auto ">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">home</a>
+                        <a class="nav-link" href="<?php echo URL; ?>">home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="sobre.html">sobre</a>
+                        <a class="nav-link" href="<?php echo URL . 'sobre'; ?>">sobre</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="solucoes.html">soluções</a>
+                        <a class="nav-link" href="<?php echo URL . 'solucoes'; ?>">soluções</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="blog.html">blog</a>
+                        <a class="nav-link" href="<?php echo URL . 'blog'; ?>">blog</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contato.html">contato</a>
+                        <a class="nav-link" href="<?php echo URL . 'contato'; ?>">contato</a>
                     </li>
                 </ul>
             </div>
