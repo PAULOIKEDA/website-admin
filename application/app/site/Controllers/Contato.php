@@ -19,7 +19,12 @@ class Contato {
             unset($this->Dados['EnviaContato']);
             $cadastro = new \Site\Models\Contato();
             $cadastro->cadastrarContato($this->Dados);
-            $this->Dados['form'] = $this->Dados;
+            if ($cadastro->getResultado()) {
+                $this->Dados['form'] = null;
+            }else{
+                $this->Dados['form'] = $this->Dados;
+            }
+            
         }     
 
         $carregarView = new \Core\ConfigView("site/Views/contato/contato", $this->Dados);
