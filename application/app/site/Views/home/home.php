@@ -109,7 +109,7 @@
                             <a class="btn btn-primary" href="<?php echo URL . 'blog'.$slug; ?>" role="button">+ ver mais</a>
                         </div>
                         <div class="card-footer">
-                            <small class="text-muted">Last updated 3 mins ago</small>
+                            <small class="text-muted"><?php echo date('d/m/Y', strtotime($created)); ?></small>
                         </div>
                     </div>
                 <?php

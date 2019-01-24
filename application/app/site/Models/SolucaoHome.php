@@ -7,7 +7,7 @@ if (!defined('URL')) {
     exit();
 }
 
-class Solucao {
+class SolucaoHome {
 
     private $Resultado;
 
