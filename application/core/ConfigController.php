@@ -58,7 +58,11 @@ class ConfigController {
     public function carregar() {
         $classe = "\\Site\\Controllers\\" . $this->UrlController;
         $classeCarregar = new $classe;
-        $classeCarregar->index();
+        if ($this->UrlParametro !== null) {
+            $classeCarregar->index($this->UrlParametro);
+        }else{
+            $classeCarregar->index();
+        }        
     }
 
 }

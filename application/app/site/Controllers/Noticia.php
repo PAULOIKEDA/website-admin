@@ -9,8 +9,24 @@ if (!defined('URL')) {
 
 class Noticia {
 
-  public function index() {
-    echo "noticia aberta";
+  private $Dados;
+  private $Noticia;
+
+  public function index($Noticia = null) {
+
+    $this->Noticia = (string) $Noticia;
+    $visualizar = new \Site\Models\Noticia();
+    $this->Dados['blog'] = $visualizar->visualizar($this->Noticia);
+
+    $listar_ultimas = new \Site\Models\NoticiaUltimas();
+    $this->Dados['blog_ultimas'] = $listar_ultimas->listarUltimas();
+
+    $listar_destaques = new \Site\Models\NoticiaDestaques();
+    $this->Dados['blog_destaques'] = $listar_destaques->listarDestaques();
+
+    $carregarView = new \Core\ConfigView("site/Views/blog/noticia", $this->Dados);
+    $carregarView->renderizar();
+
   }
 
 }
