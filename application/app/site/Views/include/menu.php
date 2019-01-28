@@ -14,7 +14,7 @@
                             extract($menu);
                             ?>
                             <li class="nav-item">
-                                <a class="nav-link" href="<?php echo URL.$nome_pagina; ?>"><?php echo $nome_pagina; ?></a>
+                                <a class="nav-link" href="<?php echo URL.$endereco; ?>"><?php echo $nome_pagina; ?></a>
                             </li>
                         <?php
                         }

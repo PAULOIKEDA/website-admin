@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Tempo de geração: 28/01/2019 às 02:02
+-- Tempo de geração: 28/01/2019 às 20:13
 -- Versão do servidor: 10.1.37-MariaDB-0+deb9u1
 -- Versão do PHP: 7.3.1-1+0~20190113101756.25+stretch~1.gbp15aaa9
 
@@ -265,6 +265,7 @@ CREATE TABLE `paginas` (
   `id` int(11) NOT NULL,
   `controller` varchar(220) NOT NULL,
   `nome_pagina` varchar(220) NOT NULL,
+  `endereco` varchar(120) NOT NULL,
   `titulo` varchar(220) NOT NULL,
   `obs` text,
   `keywords` varchar(220) NOT NULL,
@@ -284,12 +285,12 @@ CREATE TABLE `paginas` (
 -- Fazendo dump de dados para tabela `paginas`
 --
 
-INSERT INTO `paginas` (`id`, `controller`, `nome_pagina`, `titulo`, `obs`, `keywords`, `description`, `author`, `imagem`, `ativa`, `ordem`, `tipo_pagina_id`, `robot_id`, `estado_pagina_id`, `created`, `modified`) VALUES
-(1, 'Home', 'Página Inicial', 'dalfre - home', NULL, 'desenvolvimento web, sites', 'desenvolvimento de website com painel administrativo', 'Danrlei Dal Fré', 'home.jpg', 1, 1, 1, 1, 1, '2019-01-28 00:00:00', NULL),
-(2, 'Sobre', 'Sobre a Empresa', 'dalfre - sobre', NULL, 'sobre a dalfre soluções', 'conheça mais sobre nós', 'Danrlei Dal Fré', 'sobre.jpg', 1, 1, 1, 1, 1, '2019-01-28 00:00:00', NULL),
-(3, 'Solucoes', 'Soluções oferecidas', 'dalfre - soluções', NULL, 'php, mysql, css3, html5', 'soluções da dalfre', 'Danrlei Dal Fré', 'solucoes.jpg', 1, 1, 1, 1, 1, '2019-01-28 00:00:00', NULL),
-(4, 'Blog', 'Blog dalfre', 'dalfre - blog', NULL, 'desenvolvimento web, noticias, tecnologia', 'variados assuntos sobre tecnologia', 'Danrlei Dal Fré', 'blog.jpg', 1, 1, 1, 1, 1, '2019-01-28 00:00:00', NULL),
-(5, 'Contato', 'Contato com dalfre', 'dalfre - contato', NULL, 'contato dalfre, email, orçamento', 'entre em contato conosco para um orçamento', 'Danrlei Dal Fré', 'contato.jpg', 1, 1, 1, 1, 1, '2019-01-28 00:00:00', NULL);
+INSERT INTO `paginas` (`id`, `controller`, `nome_pagina`, `endereco`, `titulo`, `obs`, `keywords`, `description`, `author`, `imagem`, `ativa`, `ordem`, `tipo_pagina_id`, `robot_id`, `estado_pagina_id`, `created`, `modified`) VALUES
+(1, 'Home', 'home', 'home', 'dalfre - home', NULL, 'desenvolvimento web, sites', 'desenvolvimento de website com painel administrativo', 'Danrlei Dal Fré', 'home.jpg', 1, 1, 1, 1, 1, '2019-01-28 00:00:00', NULL),
+(2, 'Sobre', 'sobre', 'sobre', 'dalfre - sobre', NULL, 'sobre a dalfre soluções', 'conheça mais sobre nós', 'Danrlei Dal Fré', 'sobre.jpg', 1, 2, 1, 1, 1, '2019-01-28 00:00:00', NULL),
+(3, 'Solucoes', 'soluções', 'solucoes', 'dalfre - soluções', NULL, 'php, mysql, css3, html5', 'soluções da dalfre', 'Danrlei Dal Fré', 'solucoes.jpg', 1, 3, 1, 1, 1, '2019-01-28 00:00:00', NULL),
+(4, 'Blog', 'blog', 'blog', 'dalfre - blog', NULL, 'desenvolvimento web, noticias, tecnologia', 'variados assuntos sobre tecnologia', 'Danrlei Dal Fré', 'blog.jpg', 1, 4, 1, 1, 1, '2019-01-28 00:00:00', NULL),
+(5, 'Contato', 'contato', 'contato', 'dalfre - contato', NULL, 'contato dalfre, email, orçamento', 'entre em contato conosco para um orçamento', 'Danrlei Dal Fré', 'contato.jpg', 1, 5, 1, 1, 1, '2019-01-28 00:00:00', NULL);
 
 -- --------------------------------------------------------
 
