@@ -12,6 +12,10 @@ class Sobre {
     private $Dados;
 
     public function index() {
+
+        $listar_menu = new \Site\Models\Menu();
+        $this->Dados['menu'] = $listar_menu->listarMenu();
+
         $listar_sobre = new \Site\Models\Sobre();
         $this->Dados['sobre'] = $listar_sobre->listar();
 

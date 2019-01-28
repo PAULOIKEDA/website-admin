@@ -11,7 +11,7 @@ class Contato {
 
     private $Dados;
 
-    public function index() {
+    public function index() {        
 
         $this->Dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
@@ -26,6 +26,9 @@ class Contato {
             }
             
         }     
+
+        $listar_menu = new \Site\Models\Menu();
+        $this->Dados['menu'] = $listar_menu->listarMenu();
 
         $carregarView = new \Core\ConfigView("site/Views/contato/contato", $this->Dados);
         $carregarView->renderizar();
