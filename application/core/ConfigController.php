@@ -8,6 +8,7 @@ class ConfigController {
     private $UrlConjunto;
     private $UrlController;
     private $UrlParametro;
+    private $classe;
     private static $Format;
 
     public function __construct() {
@@ -19,7 +20,7 @@ class ConfigController {
             if (isset($this->UrlConjunto[0])) {
                 $this->UrlController = $this->slugController($this->UrlConjunto[0]);
             } else {
-                $this->UrlController = "home";
+                $this->UrlController = $this->slugController(CONTROLLER);
             }
 
             if (isset($this->UrlConjunto[1])) {
@@ -31,7 +32,7 @@ class ConfigController {
             // echo "URL: {$this->Url} <br>";
             // echo "Controller: {$this->UrlController} <br>";
         } else {
-            $this->UrlController = CONTROLLER;
+            $this->UrlController = $this->slugController(CONTROLLER);
             $this->UrlParametro = null;
         }        
     }
@@ -56,12 +57,26 @@ class ConfigController {
     }
 
     public function carregar() {
-        $classe = "\\Site\\Controllers\\" . $this->UrlController;
-        $classeCarregar = new $classe;
-        if ($this->UrlParametro !== null) {
-            $classeCarregar->index($this->UrlParametro);
+        $this->Classe = "\\Site\\Controllers\\" . $this->UrlController;
+        if (class_exists($this->Classe)) {
+            $this->carregarMetodo();
         }else{
-            $classeCarregar->index();
+            $this->UrlController = $this->slugController(CONTROLLER);
+            $this->carregar();
+        }             
+    }
+
+    private function carregarMetodo() {
+        $classeCarregar = new $this->Classe;
+        if (method_exists($classeCarregar, "index")) {
+            if ($this->UrlParametro !== null) {
+                $classeCarregar->index($this->UrlParametro);
+            }else{
+                $classeCarregar->index();
+            }
+        }else{
+            $this->UrlController = $this->slugController(CONTROLLER);
+            $this->carregar();
         }        
     }
 
