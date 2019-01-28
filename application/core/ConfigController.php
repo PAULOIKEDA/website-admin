@@ -8,7 +8,8 @@ class ConfigController {
     private $UrlConjunto;
     private $UrlController;
     private $UrlParametro;
-    private $classe;
+    private $Classe;
+    private $Paginas;
     private static $Format;
 
     public function __construct() {
@@ -57,13 +58,20 @@ class ConfigController {
     }
 
     public function carregar() {
-        $this->Classe = "\\Site\\Controllers\\" . $this->UrlController;
-        if (class_exists($this->Classe)) {
-            $this->carregarMetodo();
+        $listarPg = new \Site\Models\Paginas();
+        $this->Paginas = $listarPg->listarPaginas($this->UrlController);
+        if ($this->Paginas) {
+            $this->Classe = "\\Site\\Controllers\\" . $this->UrlController;
+            if (class_exists($this->Classe)) {
+                $this->carregarMetodo();
+            }else{
+                $this->UrlController = $this->slugController(CONTROLLER);
+                $this->carregar();
+            } 
         }else{
             $this->UrlController = $this->slugController(CONTROLLER);
             $this->carregar();
-        }             
+        }                    
     }
 
     private function carregarMetodo() {
