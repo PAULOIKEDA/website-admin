@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: 08-Fev-2019 às 23:45
+-- Generation Time: 09-Fev-2019 às 00:02
 -- Versão do servidor: 5.7.21-1
 -- PHP Version: 7.2.4-1+b1
 
@@ -290,7 +290,8 @@ INSERT INTO `paginas` (`id`, `controller`, `nome_pagina`, `endereco`, `titulo`, 
 (2, 'Sobre', 'sobre', 'sobre', 'dalfre - sobre', NULL, 'sobre a dalfre soluções', 'conheça mais sobre nós', 'Danrlei Dal Fré', 'sobre.jpg', 1, 2, 1, 1, 1, '2019-01-28 00:00:00', NULL),
 (3, 'Solucoes', 'soluções', 'solucoes', 'dalfre - soluções', NULL, 'php, mysql, css3, html5', 'soluções da dalfre', 'Danrlei Dal Fré', 'solucoes.jpg', 1, 3, 1, 1, 1, '2019-01-28 00:00:00', NULL),
 (4, 'Blog', 'blog', 'blog', 'dalfre - blog', NULL, 'desenvolvimento web, noticias, tecnologia', 'variados assuntos sobre tecnologia', 'Danrlei Dal Fré', 'blog.jpg', 1, 4, 1, 1, 1, '2019-01-28 00:00:00', NULL),
-(5, 'Contato', 'contato', 'contato', 'dalfre - contato', NULL, 'contato dalfre, email, orçamento', 'entre em contato conosco para um orçamento', 'Danrlei Dal Fré', 'contato.jpg', 1, 5, 1, 1, 1, '2019-01-28 00:00:00', NULL);
+(5, 'Contato', 'contato', 'contato', 'dalfre - contato', NULL, 'contato dalfre, email, orçamento', 'entre em contato conosco para um orçamento', 'Danrlei Dal Fré', 'contato.jpg', 1, 5, 1, 1, 1, '2019-01-28 00:00:00', NULL),
+(6, 'Noticia', 'noticia', 'noticia', 'noticia', NULL, 'noticia', 'noticia', 'danrlei', NULL, 2, 6, 1, 1, 1, '2019-02-09 00:00:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -623,7 +624,7 @@ ALTER TABLE `estado_paginas`
 -- AUTO_INCREMENT for table `paginas`
 --
 ALTER TABLE `paginas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `robots`
 --
