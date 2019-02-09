@@ -16,6 +16,9 @@ class Sobre {
         $listar_menu = new \Site\Models\Menu();
         $this->Dados['menu'] = $listar_menu->listarMenu();
 
+        $listar_seo = new \Site\Models\Seo();
+        $this->Dados['seo'] = $listar_seo->listarSeo();
+
         $listar_sobre = new \Site\Models\Sobre();
         $this->Dados['sobre'] = $listar_sobre->listar();
 

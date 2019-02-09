@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.6deb4
+-- version 4.6.6deb5
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Tempo de geração: 28/01/2019 às 20:13
--- Versão do servidor: 10.1.37-MariaDB-0+deb9u1
--- Versão do PHP: 7.3.1-1+0~20190113101756.25+stretch~1.gbp15aaa9
+-- Generation Time: 08-Fev-2019 às 23:45
+-- Versão do servidor: 5.7.21-1
+-- PHP Version: 7.2.4-1+b1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `dalfre`
+-- Database: `dalfre`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `admin_robots`
+-- Estrutura da tabela `admin_robots`
 --
 
 CREATE TABLE `admin_robots` (
@@ -35,7 +35,7 @@ CREATE TABLE `admin_robots` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Fazendo dump de dados para tabela `admin_robots`
+-- Extraindo dados da tabela `admin_robots`
 --
 
 INSERT INTO `admin_robots` (`id`, `nome`, `tipo`, `created`, `modified`) VALUES
@@ -48,7 +48,7 @@ INSERT INTO `admin_robots` (`id`, `nome`, `tipo`, `created`, `modified`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `admin_sites`
+-- Estrutura da tabela `admin_sites`
 --
 
 CREATE TABLE `admin_sites` (
@@ -60,7 +60,7 @@ CREATE TABLE `admin_sites` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Fazendo dump de dados para tabela `admin_sites`
+-- Extraindo dados da tabela `admin_sites`
 --
 
 INSERT INTO `admin_sites` (`id`, `nome`, `cor_id`, `created`, `modified`) VALUES
@@ -71,7 +71,7 @@ INSERT INTO `admin_sites` (`id`, `nome`, `cor_id`, `created`, `modified`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `admin_usuarios`
+-- Estrutura da tabela `admin_usuarios`
 --
 
 CREATE TABLE `admin_usuarios` (
@@ -85,7 +85,7 @@ CREATE TABLE `admin_usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Fazendo dump de dados para tabela `admin_usuarios`
+-- Extraindo dados da tabela `admin_usuarios`
 --
 
 INSERT INTO `admin_usuarios` (`id`, `nome`, `apelido`, `email`, `senha`, `created`, `modified`) VALUES
@@ -95,7 +95,7 @@ INSERT INTO `admin_usuarios` (`id`, `nome`, `apelido`, `email`, `senha`, `create
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `blog`
+-- Estrutura da tabela `blog`
 --
 
 CREATE TABLE `blog` (
@@ -122,7 +122,7 @@ CREATE TABLE `blog` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Fazendo dump de dados para tabela `blog`
+-- Extraindo dados da tabela `blog`
 --
 
 INSERT INTO `blog` (`id`, `titulo`, `descricao`, `conteudo`, `imagem`, `slug`, `keywords`, `description`, `autor`, `imagem_autor`, `descricao_autor`, `resumo_publico`, `acessos`, `robot_id`, `admin_usuario_id`, `admin_site_id`, `tipo_blog_id`, `categoria_blog_id`, `created`, `modified`) VALUES
@@ -136,7 +136,7 @@ INSERT INTO `blog` (`id`, `titulo`, `descricao`, `conteudo`, `imagem`, `slug`, `
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `carousels`
+-- Estrutura da tabela `carousels`
 --
 
 CREATE TABLE `carousels` (
@@ -156,7 +156,7 @@ CREATE TABLE `carousels` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Fazendo dump de dados para tabela `carousels`
+-- Extraindo dados da tabela `carousels`
 --
 
 INSERT INTO `carousels` (`id`, `nome`, `imagem`, `titulo`, `descricao`, `posicao_text`, `titulo_botao`, `link`, `ordem`, `cor_id`, `estado_id`, `created`, `modified`) VALUES
@@ -166,7 +166,7 @@ INSERT INTO `carousels` (`id`, `nome`, `imagem`, `titulo`, `descricao`, `posicao
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `categorias_blog`
+-- Estrutura da tabela `categorias_blog`
 --
 
 CREATE TABLE `categorias_blog` (
@@ -177,7 +177,7 @@ CREATE TABLE `categorias_blog` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Fazendo dump de dados para tabela `categorias_blog`
+-- Extraindo dados da tabela `categorias_blog`
 --
 
 INSERT INTO `categorias_blog` (`id`, `nome`, `created`, `modified`) VALUES
@@ -188,7 +188,7 @@ INSERT INTO `categorias_blog` (`id`, `nome`, `created`, `modified`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `contatos`
+-- Estrutura da tabela `contatos`
 --
 
 CREATE TABLE `contatos` (
@@ -207,7 +207,7 @@ CREATE TABLE `contatos` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `cores`
+-- Estrutura da tabela `cores`
 --
 
 CREATE TABLE `cores` (
@@ -219,7 +219,7 @@ CREATE TABLE `cores` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Fazendo dump de dados para tabela `cores`
+-- Extraindo dados da tabela `cores`
 --
 
 INSERT INTO `cores` (`id`, `nome`, `cor`, `created`, `modified`) VALUES
@@ -235,7 +235,7 @@ INSERT INTO `cores` (`id`, `nome`, `cor`, `created`, `modified`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `estado_paginas`
+-- Estrutura da tabela `estado_paginas`
 --
 
 CREATE TABLE `estado_paginas` (
@@ -247,7 +247,7 @@ CREATE TABLE `estado_paginas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Fazendo dump de dados para tabela `estado_paginas`
+-- Extraindo dados da tabela `estado_paginas`
 --
 
 INSERT INTO `estado_paginas` (`id`, `nome`, `cores_id`, `created`, `modified`) VALUES
@@ -258,7 +258,7 @@ INSERT INTO `estado_paginas` (`id`, `nome`, `cores_id`, `created`, `modified`) V
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `paginas`
+-- Estrutura da tabela `paginas`
 --
 
 CREATE TABLE `paginas` (
@@ -282,7 +282,7 @@ CREATE TABLE `paginas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Fazendo dump de dados para tabela `paginas`
+-- Extraindo dados da tabela `paginas`
 --
 
 INSERT INTO `paginas` (`id`, `controller`, `nome_pagina`, `endereco`, `titulo`, `obs`, `keywords`, `description`, `author`, `imagem`, `ativa`, `ordem`, `tipo_pagina_id`, `robot_id`, `estado_pagina_id`, `created`, `modified`) VALUES
@@ -295,7 +295,7 @@ INSERT INTO `paginas` (`id`, `controller`, `nome_pagina`, `endereco`, `titulo`, 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `robots`
+-- Estrutura da tabela `robots`
 --
 
 CREATE TABLE `robots` (
@@ -307,7 +307,7 @@ CREATE TABLE `robots` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Fazendo dump de dados para tabela `robots`
+-- Extraindo dados da tabela `robots`
 --
 
 INSERT INTO `robots` (`id`, `nome`, `tipo`, `created`, `modified`) VALUES
@@ -320,7 +320,29 @@ INSERT INTO `robots` (`id`, `nome`, `tipo`, `created`, `modified`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `sobre`
+-- Estrutura da tabela `seo`
+--
+
+CREATE TABLE `seo` (
+  `id` int(11) NOT NULL,
+  `og_site_name` varchar(40) NOT NULL,
+  `og_locale` varchar(40) NOT NULL,
+  `fb_admins` varchar(120) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `seo`
+--
+
+INSERT INTO `seo` (`id`, `og_site_name`, `og_locale`, `fb_admins`, `created`, `modified`) VALUES
+(1, 'dalfre', 'pt_br', '100002667044178', '2019-02-07 00:00:00', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `sobre`
 --
 
 CREATE TABLE `sobre` (
@@ -341,7 +363,7 @@ CREATE TABLE `sobre` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Fazendo dump de dados para tabela `sobre`
+-- Extraindo dados da tabela `sobre`
 --
 
 INSERT INTO `sobre` (`id`, `titulo`, `descricao`, `icone_1`, `nome_1`, `descricao_1`, `icone_2`, `nome_2`, `descricao_2`, `icone_3`, `nome_3`, `descricao_3`, `created`, `modified`) VALUES
@@ -350,7 +372,7 @@ INSERT INTO `sobre` (`id`, `titulo`, `descricao`, `icone_1`, `nome_1`, `descrica
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `solucoes`
+-- Estrutura da tabela `solucoes`
 --
 
 CREATE TABLE `solucoes` (
@@ -370,7 +392,7 @@ CREATE TABLE `solucoes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Fazendo dump de dados para tabela `solucoes`
+-- Extraindo dados da tabela `solucoes`
 --
 
 INSERT INTO `solucoes` (`id`, `titulo`, `icone_1`, `nome_1`, `descricao_1`, `icone_2`, `nome_2`, `descricao_2`, `icone_3`, `nome_3`, `descricao_3`, `created`, `modified`) VALUES
@@ -379,7 +401,7 @@ INSERT INTO `solucoes` (`id`, `titulo`, `icone_1`, `nome_1`, `descricao_1`, `ico
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tipos_blog`
+-- Estrutura da tabela `tipos_blog`
 --
 
 CREATE TABLE `tipos_blog` (
@@ -390,7 +412,7 @@ CREATE TABLE `tipos_blog` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Fazendo dump de dados para tabela `tipos_blog`
+-- Extraindo dados da tabela `tipos_blog`
 --
 
 INSERT INTO `tipos_blog` (`id`, `nome`, `created`, `modified`) VALUES
@@ -401,7 +423,7 @@ INSERT INTO `tipos_blog` (`id`, `nome`, `created`, `modified`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tipo_paginas`
+-- Estrutura da tabela `tipo_paginas`
 --
 
 CREATE TABLE `tipo_paginas` (
@@ -415,7 +437,7 @@ CREATE TABLE `tipo_paginas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Fazendo dump de dados para tabela `tipo_paginas`
+-- Extraindo dados da tabela `tipo_paginas`
 --
 
 INSERT INTO `tipo_paginas` (`id`, `tipo`, `nome`, `obs`, `ordem`, `created`, `modified`) VALUES
@@ -424,7 +446,7 @@ INSERT INTO `tipo_paginas` (`id`, `tipo`, `nome`, `obs`, `ordem`, `created`, `mo
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `videos`
+-- Estrutura da tabela `videos`
 --
 
 CREATE TABLE `videos` (
@@ -436,193 +458,204 @@ CREATE TABLE `videos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Fazendo dump de dados para tabela `videos`
+-- Extraindo dados da tabela `videos`
 --
 
 INSERT INTO `videos` (`id`, `titulo`, `video`, `created`, `modified`) VALUES
 (1, 'vídeos', '<iframe class=\"embed-responsive-item\" src=\"https://www.youtube.com/embed/dc5el8hbdFw\" allowfullscreen></iframe>', '2019-01-18 00:00:00', NULL);
 
 --
--- Índices de tabelas apagadas
+-- Indexes for dumped tables
 --
 
 --
--- Índices de tabela `admin_robots`
+-- Indexes for table `admin_robots`
 --
 ALTER TABLE `admin_robots`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices de tabela `admin_sites`
+-- Indexes for table `admin_sites`
 --
 ALTER TABLE `admin_sites`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices de tabela `admin_usuarios`
+-- Indexes for table `admin_usuarios`
 --
 ALTER TABLE `admin_usuarios`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices de tabela `blog`
+-- Indexes for table `blog`
 --
 ALTER TABLE `blog`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices de tabela `carousels`
+-- Indexes for table `carousels`
 --
 ALTER TABLE `carousels`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices de tabela `categorias_blog`
+-- Indexes for table `categorias_blog`
 --
 ALTER TABLE `categorias_blog`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices de tabela `contatos`
+-- Indexes for table `contatos`
 --
 ALTER TABLE `contatos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices de tabela `cores`
+-- Indexes for table `cores`
 --
 ALTER TABLE `cores`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices de tabela `estado_paginas`
+-- Indexes for table `estado_paginas`
 --
 ALTER TABLE `estado_paginas`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices de tabela `paginas`
+-- Indexes for table `paginas`
 --
 ALTER TABLE `paginas`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices de tabela `robots`
+-- Indexes for table `robots`
 --
 ALTER TABLE `robots`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices de tabela `sobre`
+-- Indexes for table `seo`
+--
+ALTER TABLE `seo`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `sobre`
 --
 ALTER TABLE `sobre`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices de tabela `solucoes`
+-- Indexes for table `solucoes`
 --
 ALTER TABLE `solucoes`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices de tabela `tipos_blog`
+-- Indexes for table `tipos_blog`
 --
 ALTER TABLE `tipos_blog`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices de tabela `tipo_paginas`
+-- Indexes for table `tipo_paginas`
 --
 ALTER TABLE `tipo_paginas`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices de tabela `videos`
+-- Indexes for table `videos`
 --
 ALTER TABLE `videos`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT de tabelas apagadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de tabela `admin_robots`
+-- AUTO_INCREMENT for table `admin_robots`
 --
 ALTER TABLE `admin_robots`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
--- AUTO_INCREMENT de tabela `admin_sites`
+-- AUTO_INCREMENT for table `admin_sites`
 --
 ALTER TABLE `admin_sites`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT de tabela `admin_usuarios`
+-- AUTO_INCREMENT for table `admin_usuarios`
 --
 ALTER TABLE `admin_usuarios`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
--- AUTO_INCREMENT de tabela `blog`
+-- AUTO_INCREMENT for table `blog`
 --
 ALTER TABLE `blog`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
--- AUTO_INCREMENT de tabela `carousels`
+-- AUTO_INCREMENT for table `carousels`
 --
 ALTER TABLE `carousels`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
--- AUTO_INCREMENT de tabela `categorias_blog`
+-- AUTO_INCREMENT for table `categorias_blog`
 --
 ALTER TABLE `categorias_blog`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT de tabela `contatos`
+-- AUTO_INCREMENT for table `contatos`
 --
 ALTER TABLE `contatos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT de tabela `cores`
+-- AUTO_INCREMENT for table `cores`
 --
 ALTER TABLE `cores`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
--- AUTO_INCREMENT de tabela `estado_paginas`
+-- AUTO_INCREMENT for table `estado_paginas`
 --
 ALTER TABLE `estado_paginas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT de tabela `paginas`
+-- AUTO_INCREMENT for table `paginas`
 --
 ALTER TABLE `paginas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
--- AUTO_INCREMENT de tabela `robots`
+-- AUTO_INCREMENT for table `robots`
 --
 ALTER TABLE `robots`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
--- AUTO_INCREMENT de tabela `sobre`
+-- AUTO_INCREMENT for table `seo`
+--
+ALTER TABLE `seo`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `sobre`
 --
 ALTER TABLE `sobre`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT de tabela `solucoes`
+-- AUTO_INCREMENT for table `solucoes`
 --
 ALTER TABLE `solucoes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT de tabela `tipos_blog`
+-- AUTO_INCREMENT for table `tipos_blog`
 --
 ALTER TABLE `tipos_blog`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT de tabela `tipo_paginas`
+-- AUTO_INCREMENT for table `tipo_paginas`
 --
 ALTER TABLE `tipo_paginas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT de tabela `videos`
+-- AUTO_INCREMENT for table `videos`
 --
 ALTER TABLE `videos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;

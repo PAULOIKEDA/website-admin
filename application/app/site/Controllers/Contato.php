@@ -30,6 +30,9 @@ class Contato {
         $listar_menu = new \Site\Models\Menu();
         $this->Dados['menu'] = $listar_menu->listarMenu();
 
+        $listar_seo = new \Site\Models\Seo();
+        $this->Dados['seo'] = $listar_seo->listarSeo();
+
         $carregarView = new \Core\ConfigView("site/Views/contato/contato", $this->Dados);
         $carregarView->renderizar();
     }

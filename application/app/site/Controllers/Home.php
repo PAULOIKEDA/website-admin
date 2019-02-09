@@ -16,6 +16,9 @@ class Home {
         $listar_menu = new \Site\Models\Menu();
         $this->Dados['menu'] = $listar_menu->listarMenu();
 
+        $listar_seo = new \Site\Models\Seo();
+        $this->Dados['seo'] = $listar_seo->listarSeo();
+
         $listar_carousel = new \Site\Models\Carousel();
         $this->Dados['carousels'] = $listar_carousel->listar();
 

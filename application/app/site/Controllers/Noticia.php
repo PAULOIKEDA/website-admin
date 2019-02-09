@@ -14,6 +14,12 @@ class Noticia {
 
   public function index($Noticia = null) {
 
+    $listar_menu = new \Site\Models\Menu();
+    $this->Dados['menu'] = $listar_menu->listarMenu();
+
+    $listar_seo = new \Site\Models\Seo();
+    $this->Dados['seo'] = $listar_seo->listarSeo();
+
     $this->Noticia = (string) $Noticia;
     $visualizar = new \Site\Models\Noticia();
     $this->Dados['blog'] = $visualizar->visualizar($this->Noticia);
