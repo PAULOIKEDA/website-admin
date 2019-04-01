@@ -1,0 +1,17 @@
+{
+    "name": "dalfre soluções",
+    "description": "Site com painel admim",
+    "authors": [
+        {
+            "name": "Danrlei Dal Fré",
+            "email": "danrleidalfre@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Core\\": "core",
+            "Site\\": "app/site"
+        }
+    },
+    "require": {}
+}
