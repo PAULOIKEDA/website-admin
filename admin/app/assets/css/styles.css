@@ -1,0 +1,53 @@
+.navbar-brand {
+    width: 8% !important;
+}
+
+.sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    height: 90vh;
+    transition: all .3s;
+}
+
+.sidebar ul li a {
+    display: block;
+    padding: .75rem 1rem;
+    color: #fff;
+    transition: all .3s;
+}
+
+.sidebar ul li a:hover, .sidebar ul .active a {
+    text-decoration: none;
+    background-color: gray;
+}
+
+.sidebar.toggled {
+    margin-left: -250px;
+    transition:  all .3s;
+}
+
+.sidebar-toogle:hover {
+    cursor: pointer;
+}
+
+.sidebar [aria-expanded="true"] {
+    background-color: darkgrey;
+}
+
+.titulo-h2 {
+    font-size: 2rem;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        margin-left: -250px;
+        transition:  all .3s;
+    }
+    .sidebar.toggled {
+        margin-left: 0px;
+        transition:  all .3s;
+    }
+    .sidebar-toogle:hover {
+        cursor: pointer;
+    }
+}
