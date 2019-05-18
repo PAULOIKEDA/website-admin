@@ -17,11 +17,15 @@ class Paginas {
 
     $this->UrlController = (string) $UrlController;
     $this->UrlMetodo = (string) $UrlMetodo;
-    $listar = new \Site\Models\helper\SiteRead();
-    // $listar->fullRead('SELECT id FROM paginas WHERE estado_pagina_id =:estado_pagina_id AND controller =:controller LIMIT :limit', "estado_pagina_id=1&controller={$this->UrlController}&limit=1");
-    // $this->Resultado = $listar->getResultado();
-    // return $this->Resultado;
 
+    $listar = new \Site\Models\helper\SiteRead();
+
+    $listar->fullRead("SELECT pg.id FROM adm_paginas pg WHERE pg.controller =:controller AND metodo =:metodo", "controller={$this->UrlController}&metodo={$this->UrlMetodo}");
+    
+    $this->Resultado = $listar->getResultado();
+
+    return ($this->Resultado);
+    
   }
 
 }
