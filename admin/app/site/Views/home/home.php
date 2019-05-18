@@ -5,7 +5,7 @@
         exit();
     }
 
-    echo "HOME <br>";
+    echo "View HOME <br>";
 
     //var_dump($this->Dados['carousels']);
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Admin\Controllers;
+namespace Site\Controllers;
 
 if (!defined('URL')) {
     header('Location: /');
@@ -13,7 +13,9 @@ class Home {
 
     public function index() {
 
-        $carregarView = new \Core\ConfigView("admin/Views/home/home", $this->Dados);
+        
+
+        $carregarView = new \Core\ConfigView("site/Views/home/home", $this->Dados);
         $carregarView->renderizar();
 
     }    

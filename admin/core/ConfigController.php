@@ -35,7 +35,7 @@ class ConfigController {
                 $this->UrlParametro = $this->UrlConjunto[2];
             } else {
                 $this->UrlParametro = null;
-            }            
+            }
 
             //echo "URL: {$this->Url} <br>";
             //echo "Controller: {$this->UrlController} <br>";
@@ -69,18 +69,18 @@ class ConfigController {
     public function carregar() {
         $listarPg = new \Site\Models\Paginas();
         $this->Paginas = $listarPg->listarPaginas($this->UrlController);
-        if ($this->Paginas) {
-            $this->Classe = "\\Site\\Controllers\\" . $this->UrlController;
-            if (class_exists($this->Classe)) {
-                $this->carregarMetodo();
-            }else{
-                $this->UrlController = $this->slugController(CONTROLLER);
-                $this->carregar();
-            } 
-        }else{
-            $this->UrlController = $this->slugController(CONTROLLER);
-            $this->carregar();
-        }                    
+        // if ($this->Paginas) {
+        //     $this->Classe = "\\Site\\Controllers\\" . $this->UrlController;
+        //     if (class_exists($this->Classe)) {
+        //         $this->carregarMetodo();
+        //     }else{
+        //         $this->UrlController = $this->slugController(CONTROLLER);
+        //         $this->carregar();
+        //     } 
+        // }else{
+        //     $this->UrlController = $this->slugController(CONTROLLER);
+        //     $this->carregar();
+        // }                    
     }
 
     private function carregarMetodo() {

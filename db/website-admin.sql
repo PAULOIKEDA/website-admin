@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.6deb5
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: 09-Fev-2019 às 00:02
--- Versão do servidor: 5.7.21-1
--- PHP Version: 7.2.4-1+b1
+-- Host: 127.0.0.1:3306
+-- Generation Time: 18-Maio-2019 às 12:00
+-- Versão do servidor: 5.7.24
+-- versão do PHP: 7.3.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -17,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `dalfre`
+-- Database: `website-admin`
 --
 
 -- --------------------------------------------------------
@@ -26,13 +28,15 @@ SET time_zone = "+00:00";
 -- Estrutura da tabela `admin_robots`
 --
 
-CREATE TABLE `admin_robots` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `admin_robots`;
+CREATE TABLE IF NOT EXISTS `admin_robots` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(220) NOT NULL,
   `tipo` varchar(120) NOT NULL,
   `created` datetime NOT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `admin_robots`
@@ -51,13 +55,15 @@ INSERT INTO `admin_robots` (`id`, `nome`, `tipo`, `created`, `modified`) VALUES
 -- Estrutura da tabela `admin_sites`
 --
 
-CREATE TABLE `admin_sites` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `admin_sites`;
+CREATE TABLE IF NOT EXISTS `admin_sites` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(20) NOT NULL,
   `cor_id` int(11) NOT NULL,
   `created` datetime NOT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `admin_sites`
@@ -74,15 +80,17 @@ INSERT INTO `admin_sites` (`id`, `nome`, `cor_id`, `created`, `modified`) VALUES
 -- Estrutura da tabela `admin_usuarios`
 --
 
-CREATE TABLE `admin_usuarios` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `admin_usuarios`;
+CREATE TABLE IF NOT EXISTS `admin_usuarios` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(220) NOT NULL,
   `apelido` varchar(50) NOT NULL,
   `email` varchar(120) NOT NULL,
   `senha` varchar(120) NOT NULL,
   `created` datetime NOT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `admin_usuarios`
@@ -95,11 +103,121 @@ INSERT INTO `admin_usuarios` (`id`, `nome`, `apelido`, `email`, `senha`, `create
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `adm_grupo`
+--
+
+DROP TABLE IF EXISTS `adm_grupo`;
+CREATE TABLE IF NOT EXISTS `adm_grupo` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(220) NOT NULL,
+  `ordem` int(11) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `adm_grupo`
+--
+
+INSERT INTO `adm_grupo` (`id`, `nome`, `ordem`, `created`, `modified`) VALUES
+(1, 'Listar', 1, '2019-05-18 04:17:10', NULL),
+(2, 'Cadastrar', 2, '2019-05-18 03:09:19', NULL),
+(3, 'Editar', 3, '2019-05-18 05:14:21', NULL),
+(4, 'Apagar', 4, '2019-05-18 08:18:32', NULL),
+(5, 'Visualizar', 5, '2019-05-18 09:41:17', NULL),
+(6, 'Outros', 6, '2019-05-18 04:18:24', NULL),
+(7, 'Acesso', 7, '2019-05-18 06:20:11', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `adm_paginas`
+--
+
+DROP TABLE IF EXISTS `adm_paginas`;
+CREATE TABLE IF NOT EXISTS `adm_paginas` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `controller` varchar(220) NOT NULL,
+  `metodo` varchar(220) NOT NULL,
+  `nome_pagina` varchar(220) NOT NULL,
+  `obs` text NOT NULL,
+  `lib_pub` int(11) NOT NULL DEFAULT '2',
+  `icone` varchar(40) NOT NULL,
+  `adm_grupo_id` int(11) NOT NULL,
+  `adm_tipo_id` int(11) NOT NULL,
+  `adm_situacao_id` int(11) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `adm_paginas`
+--
+
+INSERT INTO `adm_paginas` (`id`, `controller`, `metodo`, `nome_pagina`, `obs`, `lib_pub`, `icone`, `adm_grupo_id`, `adm_tipo_id`, `adm_situacao_id`, `created`, `modified`) VALUES
+(1, 'Home', 'index', 'Dashboard', 'Pagina Inicial', 2, 'fas fa-tachometer-alt', 1, 1, 1, '2019-05-17 07:31:14', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `adm_situacao`
+--
+
+DROP TABLE IF EXISTS `adm_situacao`;
+CREATE TABLE IF NOT EXISTS `adm_situacao` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(220) NOT NULL,
+  `cor` varchar(100) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `adm_situacao`
+--
+
+INSERT INTO `adm_situacao` (`id`, `nome`, `cor`, `created`, `modified`) VALUES
+(1, 'Ativo', 'success', '2019-05-18 04:20:27', NULL),
+(2, 'Inativo', 'danger', '2019-05-18 11:35:08', NULL),
+(3, 'Analise', 'primary', '2019-05-18 09:18:26', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `adm_tipo`
+--
+
+DROP TABLE IF EXISTS `adm_tipo`;
+CREATE TABLE IF NOT EXISTS `adm_tipo` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `tipo` varchar(100) NOT NULL,
+  `nome` varchar(220) NOT NULL,
+  `obs` text NOT NULL,
+  `ordem` int(11) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `adm_tipo`
+--
+
+INSERT INTO `adm_tipo` (`id`, `tipo`, `nome`, `obs`, `ordem`, `created`, `modified`) VALUES
+(1, 'site', 'Administrativo', 'Pagina Inicial do Administrativo', 1, '2019-05-18 09:34:19', NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `blog`
 --
 
-CREATE TABLE `blog` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `blog`;
+CREATE TABLE IF NOT EXISTS `blog` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `titulo` varchar(220) NOT NULL,
   `descricao` text NOT NULL,
   `conteudo` text NOT NULL,
@@ -118,8 +236,9 @@ CREATE TABLE `blog` (
   `tipo_blog_id` int(11) NOT NULL,
   `categoria_blog_id` int(11) NOT NULL,
   `created` datetime NOT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `blog`
@@ -139,8 +258,9 @@ INSERT INTO `blog` (`id`, `titulo`, `descricao`, `conteudo`, `imagem`, `slug`, `
 -- Estrutura da tabela `carousels`
 --
 
-CREATE TABLE `carousels` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `carousels`;
+CREATE TABLE IF NOT EXISTS `carousels` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(220) NOT NULL,
   `imagem` varchar(220) NOT NULL,
   `titulo` varchar(220) DEFAULT NULL,
@@ -152,8 +272,9 @@ CREATE TABLE `carousels` (
   `cor_id` int(11) DEFAULT NULL,
   `estado_id` int(11) NOT NULL,
   `created` datetime NOT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `carousels`
@@ -169,12 +290,14 @@ INSERT INTO `carousels` (`id`, `nome`, `imagem`, `titulo`, `descricao`, `posicao
 -- Estrutura da tabela `categorias_blog`
 --
 
-CREATE TABLE `categorias_blog` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `categorias_blog`;
+CREATE TABLE IF NOT EXISTS `categorias_blog` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(120) NOT NULL,
   `created` datetime NOT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `categorias_blog`
@@ -191,8 +314,9 @@ INSERT INTO `categorias_blog` (`id`, `nome`, `created`, `modified`) VALUES
 -- Estrutura da tabela `contatos`
 --
 
-CREATE TABLE `contatos` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `contatos`;
+CREATE TABLE IF NOT EXISTS `contatos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(220) NOT NULL,
   `email` varchar(220) NOT NULL,
   `endereco` text NOT NULL,
@@ -201,7 +325,8 @@ CREATE TABLE `contatos` (
   `cep` varchar(20) NOT NULL,
   `mensagem` text NOT NULL,
   `created` datetime NOT NULL,
-  `modified` datetime DEFAULT NULL
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -210,13 +335,15 @@ CREATE TABLE `contatos` (
 -- Estrutura da tabela `cores`
 --
 
-CREATE TABLE `cores` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `cores`;
+CREATE TABLE IF NOT EXISTS `cores` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(40) NOT NULL,
   `cor` varchar(40) NOT NULL,
   `created` datetime NOT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `cores`
@@ -238,13 +365,15 @@ INSERT INTO `cores` (`id`, `nome`, `cor`, `created`, `modified`) VALUES
 -- Estrutura da tabela `estado_paginas`
 --
 
-CREATE TABLE `estado_paginas` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `estado_paginas`;
+CREATE TABLE IF NOT EXISTS `estado_paginas` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(40) NOT NULL,
   `cores_id` int(11) NOT NULL,
   `created` datetime NOT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `estado_paginas`
@@ -261,8 +390,9 @@ INSERT INTO `estado_paginas` (`id`, `nome`, `cores_id`, `created`, `modified`) V
 -- Estrutura da tabela `paginas`
 --
 
-CREATE TABLE `paginas` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `paginas`;
+CREATE TABLE IF NOT EXISTS `paginas` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `controller` varchar(220) NOT NULL,
   `nome_pagina` varchar(220) NOT NULL,
   `endereco` varchar(120) NOT NULL,
@@ -278,8 +408,9 @@ CREATE TABLE `paginas` (
   `robot_id` int(11) NOT NULL,
   `estado_pagina_id` int(11) NOT NULL DEFAULT '2',
   `created` datetime NOT NULL,
-  `modified` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `modified` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `paginas`
@@ -299,13 +430,15 @@ INSERT INTO `paginas` (`id`, `controller`, `nome_pagina`, `endereco`, `titulo`, 
 -- Estrutura da tabela `robots`
 --
 
-CREATE TABLE `robots` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `robots`;
+CREATE TABLE IF NOT EXISTS `robots` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(220) NOT NULL,
   `tipo` varchar(40) NOT NULL,
   `created` datetime NOT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `robots`
@@ -324,14 +457,16 @@ INSERT INTO `robots` (`id`, `nome`, `tipo`, `created`, `modified`) VALUES
 -- Estrutura da tabela `seo`
 --
 
-CREATE TABLE `seo` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `seo`;
+CREATE TABLE IF NOT EXISTS `seo` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `og_site_name` varchar(40) NOT NULL,
   `og_locale` varchar(40) NOT NULL,
   `fb_admins` varchar(120) NOT NULL,
   `created` datetime NOT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `seo`
@@ -346,8 +481,9 @@ INSERT INTO `seo` (`id`, `og_site_name`, `og_locale`, `fb_admins`, `created`, `m
 -- Estrutura da tabela `sobre`
 --
 
-CREATE TABLE `sobre` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `sobre`;
+CREATE TABLE IF NOT EXISTS `sobre` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `titulo` varchar(220) NOT NULL,
   `descricao` text NOT NULL,
   `icone_1` varchar(40) NOT NULL,
@@ -360,8 +496,9 @@ CREATE TABLE `sobre` (
   `nome_3` varchar(120) NOT NULL,
   `descricao_3` text NOT NULL,
   `created` datetime NOT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `sobre`
@@ -376,8 +513,9 @@ INSERT INTO `sobre` (`id`, `titulo`, `descricao`, `icone_1`, `nome_1`, `descrica
 -- Estrutura da tabela `solucoes`
 --
 
-CREATE TABLE `solucoes` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `solucoes`;
+CREATE TABLE IF NOT EXISTS `solucoes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `titulo` varchar(250) NOT NULL,
   `icone_1` varchar(40) NOT NULL,
   `nome_1` varchar(120) NOT NULL,
@@ -389,8 +527,9 @@ CREATE TABLE `solucoes` (
   `nome_3` varchar(120) NOT NULL,
   `descricao_3` varchar(220) NOT NULL,
   `created` datetime NOT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `solucoes`
@@ -405,12 +544,14 @@ INSERT INTO `solucoes` (`id`, `titulo`, `icone_1`, `nome_1`, `descricao_1`, `ico
 -- Estrutura da tabela `tipos_blog`
 --
 
-CREATE TABLE `tipos_blog` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tipos_blog`;
+CREATE TABLE IF NOT EXISTS `tipos_blog` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(220) NOT NULL,
   `created` datetime NOT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `tipos_blog`
@@ -427,15 +568,17 @@ INSERT INTO `tipos_blog` (`id`, `nome`, `created`, `modified`) VALUES
 -- Estrutura da tabela `tipo_paginas`
 --
 
-CREATE TABLE `tipo_paginas` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tipo_paginas`;
+CREATE TABLE IF NOT EXISTS `tipo_paginas` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `tipo` varchar(120) NOT NULL,
   `nome` varchar(220) NOT NULL,
   `obs` text NOT NULL,
   `ordem` int(11) NOT NULL,
   `created` datetime NOT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `tipo_paginas`
@@ -450,13 +593,15 @@ INSERT INTO `tipo_paginas` (`id`, `tipo`, `nome`, `obs`, `ordem`, `created`, `mo
 -- Estrutura da tabela `videos`
 --
 
-CREATE TABLE `videos` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `videos`;
+CREATE TABLE IF NOT EXISTS `videos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `titulo` varchar(120) NOT NULL,
   `video` varchar(220) NOT NULL,
   `created` datetime NOT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `videos`
@@ -464,202 +609,8 @@ CREATE TABLE `videos` (
 
 INSERT INTO `videos` (`id`, `titulo`, `video`, `created`, `modified`) VALUES
 (1, 'vídeos', '<iframe class=\"embed-responsive-item\" src=\"https://www.youtube.com/embed/dc5el8hbdFw\" allowfullscreen></iframe>', '2019-01-18 00:00:00', NULL);
+COMMIT;
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `admin_robots`
---
-ALTER TABLE `admin_robots`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `admin_sites`
---
-ALTER TABLE `admin_sites`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `admin_usuarios`
---
-ALTER TABLE `admin_usuarios`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `blog`
---
-ALTER TABLE `blog`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `carousels`
---
-ALTER TABLE `carousels`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `categorias_blog`
---
-ALTER TABLE `categorias_blog`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `contatos`
---
-ALTER TABLE `contatos`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `cores`
---
-ALTER TABLE `cores`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `estado_paginas`
---
-ALTER TABLE `estado_paginas`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `paginas`
---
-ALTER TABLE `paginas`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `robots`
---
-ALTER TABLE `robots`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `seo`
---
-ALTER TABLE `seo`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `sobre`
---
-ALTER TABLE `sobre`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `solucoes`
---
-ALTER TABLE `solucoes`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tipos_blog`
---
-ALTER TABLE `tipos_blog`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tipo_paginas`
---
-ALTER TABLE `tipo_paginas`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `videos`
---
-ALTER TABLE `videos`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `admin_robots`
---
-ALTER TABLE `admin_robots`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
---
--- AUTO_INCREMENT for table `admin_sites`
---
-ALTER TABLE `admin_sites`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT for table `admin_usuarios`
---
-ALTER TABLE `admin_usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `blog`
---
-ALTER TABLE `blog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
---
--- AUTO_INCREMENT for table `carousels`
---
-ALTER TABLE `carousels`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `categorias_blog`
---
-ALTER TABLE `categorias_blog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT for table `contatos`
---
-ALTER TABLE `contatos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `cores`
---
-ALTER TABLE `cores`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
---
--- AUTO_INCREMENT for table `estado_paginas`
---
-ALTER TABLE `estado_paginas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT for table `paginas`
---
-ALTER TABLE `paginas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
---
--- AUTO_INCREMENT for table `robots`
---
-ALTER TABLE `robots`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
---
--- AUTO_INCREMENT for table `seo`
---
-ALTER TABLE `seo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `sobre`
---
-ALTER TABLE `sobre`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `solucoes`
---
-ALTER TABLE `solucoes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `tipos_blog`
---
-ALTER TABLE `tipos_blog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT for table `tipo_paginas`
---
-ALTER TABLE `tipo_paginas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `videos`
---
-ALTER TABLE `videos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
