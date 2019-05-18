@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: 18-Maio-2019 às 12:00
+-- Generation Time: 18-Maio-2019 às 13:43
 -- Versão do servidor: 5.7.24
 -- versão do PHP: 7.3.1
 
@@ -103,6 +103,36 @@ INSERT INTO `admin_usuarios` (`id`, `nome`, `apelido`, `email`, `senha`, `create
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `adm_cors`
+--
+
+DROP TABLE IF EXISTS `adm_cors`;
+CREATE TABLE IF NOT EXISTS `adm_cors` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(40) NOT NULL,
+  `cor` varchar(40) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `adm_cors`
+--
+
+INSERT INTO `adm_cors` (`id`, `nome`, `cor`, `created`, `modified`) VALUES
+(1, 'Azul', 'primary', '2019-05-18 00:00:00', NULL),
+(2, 'Cinza', 'secondary', '2019-05-18 00:00:00', NULL),
+(3, 'Verde', 'success', '2019-05-18 00:00:00', NULL),
+(4, 'Vermelho', 'danger', '2019-05-18 00:00:00', NULL),
+(5, 'Laranjado', 'warning', '2019-05-18 00:00:00', NULL),
+(6, 'Azul Claro', 'info', '2019-05-18 00:00:00', NULL),
+(7, 'Branco', 'light', '2019-05-18 00:00:00', NULL),
+(8, 'Preto', 'dark', '2019-05-18 00:00:00', NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `adm_grupo`
 --
 
@@ -132,6 +162,88 @@ INSERT INTO `adm_grupo` (`id`, `nome`, `ordem`, `created`, `modified`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `adm_menu`
+--
+
+DROP TABLE IF EXISTS `adm_menu`;
+CREATE TABLE IF NOT EXISTS `adm_menu` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(220) NOT NULL,
+  `icone` varchar(40) NOT NULL,
+  `ordem` int(11) NOT NULL,
+  `situacao_id` int(11) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `adm_menu`
+--
+
+INSERT INTO `adm_menu` (`id`, `nome`, `icone`, `ordem`, `situacao_id`, `created`, `modified`) VALUES
+(1, 'Dashboard', 'fas fa-tachometer-alt', 1, 1, '2019-05-18 00:00:00', NULL),
+(2, 'Usuario', 'fas fa-user', 2, 1, '2019-05-18 00:00:00', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `adm_niveis_acesso`
+--
+
+DROP TABLE IF EXISTS `adm_niveis_acesso`;
+CREATE TABLE IF NOT EXISTS `adm_niveis_acesso` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(50) NOT NULL,
+  `ordem` int(11) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `adm_niveis_acesso`
+--
+
+INSERT INTO `adm_niveis_acesso` (`id`, `nome`, `ordem`, `created`, `modified`) VALUES
+(1, 'Super Administrador', 1, '2019-05-18 11:39:23', NULL),
+(2, 'Administrador', 2, '2019-05-18 13:15:25', NULL),
+(3, 'Colaborador', 3, '2019-05-18 05:24:09', NULL),
+(4, 'Financeiro', 4, '2019-05-18 14:16:25', NULL),
+(5, 'Cliente', 5, '2019-05-18 13:14:26', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `adm_niveis_acesso_paginas`
+--
+
+DROP TABLE IF EXISTS `adm_niveis_acesso_paginas`;
+CREATE TABLE IF NOT EXISTS `adm_niveis_acesso_paginas` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `permissao` int(11) NOT NULL,
+  `ordem` int(11) NOT NULL,
+  `dropdown` int(11) NOT NULL,
+  `liberado_menu` int(11) NOT NULL,
+  `menu_id` int(11) NOT NULL,
+  `nivel_acesso_id` int(11) NOT NULL,
+  `pagina_id` int(11) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `adm_niveis_acesso_paginas`
+--
+
+INSERT INTO `adm_niveis_acesso_paginas` (`id`, `permissao`, `ordem`, `dropdown`, `liberado_menu`, `menu_id`, `nivel_acesso_id`, `pagina_id`, `created`, `modified`) VALUES
+(1, 1, 1, 2, 1, 1, 1, 1, '2019-05-18 00:00:00', NULL),
+(2, 1, 2, 1, 1, 2, 1, 2, '2019-05-18 00:00:00', NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `adm_paginas`
 --
 
@@ -150,14 +262,15 @@ CREATE TABLE IF NOT EXISTS `adm_paginas` (
   `created` datetime NOT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `adm_paginas`
 --
 
 INSERT INTO `adm_paginas` (`id`, `controller`, `metodo`, `nome_pagina`, `obs`, `lib_pub`, `icone`, `adm_grupo_id`, `adm_tipo_id`, `adm_situacao_id`, `created`, `modified`) VALUES
-(1, 'Home', 'index', 'Dashboard', 'Pagina Inicial', 2, 'fas fa-tachometer-alt', 1, 1, 1, '2019-05-17 07:31:14', NULL);
+(1, 'Home', 'index', 'Dashboard', 'Pagina Inicial', 2, 'fas fa-tachometer-alt', 1, 1, 1, '2019-05-17 07:31:14', NULL),
+(2, 'Usuarios', 'listar', 'Usuarios', 'Pagina de listar os usuarios', 2, 'fas fa-users', 1, 1, 1, '2019-05-18 06:48:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -187,6 +300,57 @@ INSERT INTO `adm_situacao` (`id`, `nome`, `cor`, `created`, `modified`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `adm_situacao_menu`
+--
+
+DROP TABLE IF EXISTS `adm_situacao_menu`;
+CREATE TABLE IF NOT EXISTS `adm_situacao_menu` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(40) NOT NULL,
+  `cor_id` int(11) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `adm_situacao_menu`
+--
+
+INSERT INTO `adm_situacao_menu` (`id`, `nome`, `cor_id`, `created`, `modified`) VALUES
+(1, 'Ativo', 3, '2019-05-18 00:00:00', NULL),
+(2, 'Inativo', 4, '2019-05-18 00:00:00', NULL),
+(3, 'Analise', 1, '2019-05-18 00:00:00', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `adm_situacao_usuarios`
+--
+
+DROP TABLE IF EXISTS `adm_situacao_usuarios`;
+CREATE TABLE IF NOT EXISTS `adm_situacao_usuarios` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(220) NOT NULL,
+  `cor_id` int(11) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `adm_situacao_usuarios`
+--
+
+INSERT INTO `adm_situacao_usuarios` (`id`, `nome`, `cor_id`, `created`, `modified`) VALUES
+(1, 'Ativo', 3, '2019-05-18 06:21:00', NULL),
+(2, 'Inativo', 5, '2019-05-18 00:00:00', NULL),
+(3, 'Aguardando Confirmacao', 1, '2019-05-18 00:00:00', NULL),
+(4, 'Spam', 4, '2019-05-18 00:00:00', NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `adm_tipo`
 --
 
@@ -208,6 +372,38 @@ CREATE TABLE IF NOT EXISTS `adm_tipo` (
 
 INSERT INTO `adm_tipo` (`id`, `tipo`, `nome`, `obs`, `ordem`, `created`, `modified`) VALUES
 (1, 'site', 'Administrativo', 'Pagina Inicial do Administrativo', 1, '2019-05-18 09:34:19', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `adm_usuarios`
+--
+
+DROP TABLE IF EXISTS `adm_usuarios`;
+CREATE TABLE IF NOT EXISTS `adm_usuarios` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(220) NOT NULL,
+  `apelido` varchar(220) DEFAULT NULL,
+  `email` varchar(220) NOT NULL,
+  `usuario` varchar(220) NOT NULL,
+  `senha` varchar(220) NOT NULL,
+  `recuperar_senha` varchar(220) DEFAULT NULL,
+  `cheve_descadastro` varchar(220) DEFAULT NULL,
+  `conf_email` int(11) NOT NULL DEFAULT '2',
+  `imagem` varchar(220) DEFAULT NULL,
+  `niveis_acesso_id` int(11) NOT NULL,
+  `situacao_usuario_id` int(11) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `adm_usuarios`
+--
+
+INSERT INTO `adm_usuarios` (`id`, `nome`, `apelido`, `email`, `usuario`, `senha`, `recuperar_senha`, `cheve_descadastro`, `conf_email`, `imagem`, `niveis_acesso_id`, `situacao_usuario_id`, `created`, `modified`) VALUES
+(1, 'Danrlei Dal Fre', 'Danrlei', 'danrlei@dalfre.com', 'danrlei', 'dafe50cafac60432600275100b633952', NULL, NULL, 2, NULL, 1, 1, '2019-05-18 10:11:38', NULL);
 
 -- --------------------------------------------------------
 
