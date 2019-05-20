@@ -62,6 +62,34 @@ class Login {
             $this->Resultado = false;
         }
 
-    } 
+    }
+
+    public function cadastrarUsuario(array $Dados) {
+
+        $this->Dados = $Dados;
+        $this->validarDados();
+        if($this->Resultado) {
+            $this->Dados['conf_email'] = 2;
+            $this->Dados['niveis_acesso_id'] = 5;
+            $this->Dados['situacao_usuario_id'] = 2;
+            $this->Dados['created'] = date('Y-m-d H:i:s');
+            $this->inserir();
+        }
+
+    }
+
+    private function inserir() {
+
+        $cadastrarUsuario = new \Site\Models\helper\SiteCreate();
+        $cadastrarUsuario->exeCreate('adm_usuarios', $this->Dados);
+        if($cadastrarUsuario->getResultado()) {
+            $_SESSION['msg'] = "<div class='alert alert-success'>Usuário cadastrado com sucesso</div>";
+            $this->Resultado = true;
+        } else {
+            $_SESSION['msg'] = "<div class='alert alert-danger'>Usuário não inserido, tente novamente</div>";
+            $this->Resultado = false;
+        }
+
+    }
 
 }

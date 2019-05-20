@@ -24,11 +24,15 @@ class ConfigView {
 
     public function renderizarLogin() {
 
+        include 'app/site/Views/include/header.php';
+
         if (file_exists('app/' . $this->Nome . '.php')) {
             include 'app/' . $this->Nome . '.php';
         } else {
             echo "Erro ao carregar a página: {$this->Nome}";
         }
+
+        include 'app/site/Views/include/footer.php';
         
     }
 

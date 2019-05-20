@@ -48,5 +48,23 @@ class Login {
         header("Location: $UrlDestino");
     
     }
+
+    public function novo() {
+
+        $this->Dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+        if(!empty($this->Dados['novoUser'])) {
+            unset($this->Dados['novoUser']);
+            $cadastrarUsuario = new \Site\Models\Login();
+            $cadastrarUsuario->cadastrarUsuario($this->Dados);
+            if($cadastrarUsuario->getResultado()) {
+                $UrlDestino = URLADM . 'login/entrar';
+                header('Location: $UrlDestino');
+            }
+        }
+
+        $carregaView = new \Core\ConfigView("Site/Views/login/novo", $this->Dados);
+        $carregaView->renderizarLogin();
+
+    }
  
 }

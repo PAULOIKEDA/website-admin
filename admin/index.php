@@ -1,11 +1,16 @@
-<?php
+<!doctype html>
+<html lang="pt-br">
 
-    require 'core/Config.php';
-    require 'vendor/autoload.php';
+    <?php
 
-    use Core\ConfigController as Home;
+        require 'core/Config.php';
+        require 'vendor/autoload.php';
 
-    $Url = new Home();
-    $Url->carregar();
+        use Core\ConfigController as Home;
 
-?>
+        $Url = new Home();
+        $Url->carregar();
+
+    ?>
+    
+</html>
