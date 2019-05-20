@@ -26,9 +26,9 @@ class ConfigController {
             }
 
             if (isset($this->UrlConjunto[1])) {
-                $this->UrlMetodo = $this->UrlConjunto[1];
+                $this->UrlMetodo = $this->slugMetodo($this->UrlConjunto[1]);
             } else {
-                $this->UrlController = $this->slugController(METODO);
+                $this->UrlMetodo = $this->slugMetodo(METODO);
             }
 
             if (isset($this->UrlConjunto[2])) {
@@ -43,7 +43,7 @@ class ConfigController {
             //echo "Parametro: {$this->UrlParametro} <br>";
         } else {
             $this->UrlController = $this->slugController(CONTROLLER);
-            $this->UrlMetodo = $this->slugController(METODO);
+            $this->UrlMetodo = $this->slugMetodo(METODO);
             $this->UrlParametro = null;
         }        
     }
@@ -67,6 +67,11 @@ class ConfigController {
         return $UrlController;
     }
 
+    private function slugMetodo($SlugMetodo) {
+        $UrlController = strtolower($SlugMetodo);
+        return lcfirst($UrlController);
+    }
+
     public function carregar() {
         $listarPg = new \Site\Models\Paginas();
         $this->Paginas = $listarPg->listarPaginas($this->UrlController, $this->UrlMetodo);              
@@ -77,12 +82,12 @@ class ConfigController {
                 $this->carregarMetodo();
             } else {
                 $this->UrlController = $this->slugController(CONTROLLER);
-                $this->UrlMetodo = $this->slugController(METODO);
+                $this->UrlMetodo = $this->slugMetodo(METODO);
                 $this->carregar();
             }
         } else {
-            $this->UrlController = $this->slugController(CONTROLLER);
-            $this->UrlMetodo = $this->slugController(METODO);
+            $this->UrlController = $this->slugController('Login');
+            $this->UrlMetodo = $this->slugMetodo('entrar');
             $this->carregar();
         }
     }
@@ -98,7 +103,7 @@ class ConfigController {
             }
         } else {
             $this->UrlController = $this->slugController(CONTROLLER);
-            $this->UrlMetodo = $this->slugController(METODO);
+            $this->UrlMetodo = $this->slugMetodo(METODO);
             $this->carregar();
         }
 

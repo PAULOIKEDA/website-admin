@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: 18-Maio-2019 às 15:30
+-- Generation Time: 20-Maio-2019 às 02:33
 -- Versão do servidor: 5.7.24
 -- versão do PHP: 7.3.1
 
@@ -255,9 +255,8 @@ CREATE TABLE IF NOT EXISTS `adm_paginas` (
   `nome_pagina` varchar(220) NOT NULL,
   `obs` text NOT NULL,
   `lib_pub` int(11) NOT NULL DEFAULT '2',
-  `icone` varchar(40) NOT NULL,
+  `icone` varchar(40) DEFAULT NULL,
   `adm_grupo_id` int(11) NOT NULL,
-  `adm_tipo_id` int(11) NOT NULL,
   `adm_situacao_id` int(11) NOT NULL,
   `created` datetime NOT NULL,
   `modified` datetime DEFAULT NULL,
@@ -268,10 +267,10 @@ CREATE TABLE IF NOT EXISTS `adm_paginas` (
 -- Extraindo dados da tabela `adm_paginas`
 --
 
-INSERT INTO `adm_paginas` (`id`, `controller`, `metodo`, `nome_pagina`, `obs`, `lib_pub`, `icone`, `adm_grupo_id`, `adm_tipo_id`, `adm_situacao_id`, `created`, `modified`) VALUES
-(1, 'Home', 'index', 'Dashboard', 'Pagina Inicial', 2, 'fas fa-tachometer-alt', 1, 1, 1, '2019-05-17 07:31:14', NULL),
-(2, 'Usuarios', 'listar', 'Usuarios', 'Pagina de listar os usuarios', 2, 'fas fa-users', 1, 1, 1, '2019-05-18 06:48:00', NULL),
-(3, 'Login', 'entrar', 'Login', 'Página de Loni', 2, 'fas fa-arrow-right', 1, 1, 1, '2019-05-18 00:00:00', NULL);
+INSERT INTO `adm_paginas` (`id`, `controller`, `metodo`, `nome_pagina`, `obs`, `lib_pub`, `icone`, `adm_grupo_id`, `adm_situacao_id`, `created`, `modified`) VALUES
+(1, 'Home', 'index', 'Dashboard', 'Pagina Inicial', 2, 'fas fa-tachometer-alt', 1, 1, '2019-05-17 07:31:14', NULL),
+(2, 'Usuarios', 'listar', 'Usuarios', 'Pagina de listar os usuarios', 2, 'fas fa-users', 1, 1, '2019-05-18 06:48:00', NULL),
+(3, 'Login', 'entrar', 'Login', 'Página de Loni', 1, '', 7, 1, '2019-05-18 00:00:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -352,31 +351,6 @@ INSERT INTO `adm_situacao_usuarios` (`id`, `nome`, `cor_id`, `created`, `modifie
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `adm_tipo`
---
-
-DROP TABLE IF EXISTS `adm_tipo`;
-CREATE TABLE IF NOT EXISTS `adm_tipo` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `tipo` varchar(100) NOT NULL,
-  `nome` varchar(220) NOT NULL,
-  `obs` text NOT NULL,
-  `ordem` int(11) NOT NULL,
-  `created` datetime NOT NULL,
-  `modified` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-
---
--- Extraindo dados da tabela `adm_tipo`
---
-
-INSERT INTO `adm_tipo` (`id`, `tipo`, `nome`, `obs`, `ordem`, `created`, `modified`) VALUES
-(1, 'site', 'Administrativo', 'Pagina Inicial do Administrativo', 1, '2019-05-18 09:34:19', NULL);
-
--- --------------------------------------------------------
-
---
 -- Estrutura da tabela `adm_usuarios`
 --
 
@@ -389,7 +363,7 @@ CREATE TABLE IF NOT EXISTS `adm_usuarios` (
   `usuario` varchar(220) NOT NULL,
   `senha` varchar(220) NOT NULL,
   `recuperar_senha` varchar(220) DEFAULT NULL,
-  `cheve_descadastro` varchar(220) DEFAULT NULL,
+  `chave_descadastro` varchar(220) DEFAULT NULL,
   `conf_email` int(11) NOT NULL DEFAULT '2',
   `imagem` varchar(220) DEFAULT NULL,
   `niveis_acesso_id` int(11) NOT NULL,
@@ -403,8 +377,8 @@ CREATE TABLE IF NOT EXISTS `adm_usuarios` (
 -- Extraindo dados da tabela `adm_usuarios`
 --
 
-INSERT INTO `adm_usuarios` (`id`, `nome`, `apelido`, `email`, `usuario`, `senha`, `recuperar_senha`, `cheve_descadastro`, `conf_email`, `imagem`, `niveis_acesso_id`, `situacao_usuario_id`, `created`, `modified`) VALUES
-(1, 'Danrlei Dal Fre', 'Danrlei', 'danrlei@dalfre.com', 'danrlei', 'dafe50cafac60432600275100b633952', NULL, NULL, 2, NULL, 1, 1, '2019-05-18 10:11:38', NULL);
+INSERT INTO `adm_usuarios` (`id`, `nome`, `apelido`, `email`, `usuario`, `senha`, `recuperar_senha`, `chave_descadastro`, `conf_email`, `imagem`, `niveis_acesso_id`, `situacao_usuario_id`, `created`, `modified`) VALUES
+(1, 'Danrlei Dal Fre', 'Danrlei', 'danrlei@dalfre.com', 'danrlei', '$2y$10$dkHmlPv5WaFUZj9XhF9L.OHxm9F8oTCDveJ2PXrk3rvL3sH.P8Wd2', NULL, NULL, 2, NULL, 1, 1, '2019-05-18 10:11:38', NULL);
 
 -- --------------------------------------------------------
 

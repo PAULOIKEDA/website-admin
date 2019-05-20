@@ -28,7 +28,7 @@
                 $valorForm = $this->Dados['form'];
             }
             ?>
-            <input name="usuario" value="<?php if($valorForm['usuario']){echo $valorForm['usuario'];} ?>" type="text" id="inputText" class="form-control" placeholder="usuário ou e-mail" required autofocus>
+            <input name="usuario" type="text" id="inputText" class="form-control" placeholder="usuário ou e-mail" required autofocus>
             <input name="senha" type="password" id="inputPassword" class="form-control my-2" placeholder="senha" required>
             <input name="enviarLogin" type="submit" value="Acessar" class="btn btn-lg btn-primary btn-block">
             <button type="button" class="btn btn-link">Esqueceu sua senha?</button>
