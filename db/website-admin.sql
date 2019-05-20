@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: 20-Maio-2019 às 02:33
+-- Generation Time: 20-Maio-2019 às 03:04
 -- Versão do servidor: 5.7.24
 -- versão do PHP: 7.3.1
 
@@ -231,7 +231,7 @@ CREATE TABLE IF NOT EXISTS `adm_niveis_acesso_paginas` (
   `created` datetime NOT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `adm_niveis_acesso_paginas`
@@ -239,7 +239,8 @@ CREATE TABLE IF NOT EXISTS `adm_niveis_acesso_paginas` (
 
 INSERT INTO `adm_niveis_acesso_paginas` (`id`, `permissao`, `ordem`, `dropdown`, `liberado_menu`, `menu_id`, `nivel_acesso_id`, `pagina_id`, `created`, `modified`) VALUES
 (1, 1, 1, 2, 1, 1, 1, 1, '2019-05-18 00:00:00', NULL),
-(2, 1, 2, 1, 1, 2, 1, 2, '2019-05-18 00:00:00', NULL);
+(2, 1, 2, 1, 1, 2, 1, 2, '2019-05-18 00:00:00', NULL),
+(3, 1, 3, 2, 1, 2, 1, 4, '2019-05-19 00:00:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -261,7 +262,7 @@ CREATE TABLE IF NOT EXISTS `adm_paginas` (
   `created` datetime NOT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `adm_paginas`
@@ -270,7 +271,8 @@ CREATE TABLE IF NOT EXISTS `adm_paginas` (
 INSERT INTO `adm_paginas` (`id`, `controller`, `metodo`, `nome_pagina`, `obs`, `lib_pub`, `icone`, `adm_grupo_id`, `adm_situacao_id`, `created`, `modified`) VALUES
 (1, 'Home', 'index', 'Dashboard', 'Pagina Inicial', 2, 'fas fa-tachometer-alt', 1, 1, '2019-05-17 07:31:14', NULL),
 (2, 'Usuarios', 'listar', 'Usuarios', 'Pagina de listar os usuarios', 2, 'fas fa-users', 1, 1, '2019-05-18 06:48:00', NULL),
-(3, 'Login', 'entrar', 'Login', 'Página de Loni', 1, '', 7, 1, '2019-05-18 00:00:00', NULL);
+(3, 'Login', 'entrar', 'Login', 'Página de Loni', 1, '', 7, 1, '2019-05-18 00:00:00', NULL),
+(4, 'Login', 'sair', 'Sair', 'Página de sair', 1, NULL, 7, 1, '2019-05-19 00:00:00', NULL);
 
 -- --------------------------------------------------------
 

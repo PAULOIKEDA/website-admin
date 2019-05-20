@@ -26,13 +26,27 @@ class Login {
                 $this->Dados['form'] = $this->Dados;
             }
            
-        } else {
-
         }
 
         $carregaView = new \Core\ConfigView("Site/Views/login/entrar", $this->Dados);
         $carregaView->renderizarLogin();
 
-    }    
+    }
 
+    public function sair() {
+
+        unset(
+            $_SESSION['usuario_id'],
+            $_SESSION['usuario_nome'],
+            $_SESSION['usuario_email'],
+            $_SESSION['usuario_imagem'],
+            $_SESSION['usuario_niveis_acesso_id'],
+            $_SESSION['usuario_ordem_nivel_acesso']
+        );
+        $_SESSION['msg'] = "<div class='alert alert-success'>Logout com sucesso</div>";
+        $UrlDestino = URLADM .'login/entrar';
+        header("Location: $UrlDestino");
+    
+    }
+ 
 }
