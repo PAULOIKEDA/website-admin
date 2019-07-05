@@ -58,12 +58,17 @@ class Login {
             $cadastrarUsuario->cadastrarUsuario($this->Dados);
             if($cadastrarUsuario->getResultado()) {
                 $UrlDestino = URLADM . 'login/entrar';
-                header('Location: $UrlDestino');
+                header("Location: $UrlDestino");
+            }else{
+                $carregaView = new \Core\ConfigView("Site/Views/login/novo", $this->Dados);
+                $carregaView->renderizarLogin();
             }
+        } else {
+            $carregaView = new \Core\ConfigView("Site/Views/login/novo", $this->Dados);
+            $carregaView->renderizarLogin();
         }
 
-        $carregaView = new \Core\ConfigView("Site/Views/login/novo", $this->Dados);
-        $carregaView->renderizarLogin();
+        
 
     }
  

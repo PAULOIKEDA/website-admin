@@ -67,8 +67,9 @@ class Login {
     public function cadastrarUsuario(array $Dados) {
 
         $this->Dados = $Dados;
-        $this->validarDados();
+        $this->validarDados();       
         if($this->Resultado) {
+            $this->Dados['senha'] = password_hash($this->Dados['senha'], PASSWORD_DEFAULT);
             $this->Dados['conf_email'] = 2;
             $this->Dados['niveis_acesso_id'] = 5;
             $this->Dados['situacao_usuario_id'] = 2;
@@ -80,8 +81,8 @@ class Login {
 
     private function inserir() {
 
-        $cadastrarUsuario = new \Site\Models\helper\SiteCreate();
-        $cadastrarUsuario->exeCreate('adm_usuarios', $this->Dados);
+        $cadastrarUsuario = new \Site\Models\helper\SiteCreate();       
+        $cadastrarUsuario->exeCreate('adm_usuarios', $this->Dados);   
         if($cadastrarUsuario->getResultado()) {
             $_SESSION['msg'] = "<div class='alert alert-success'>Usuário cadastrado com sucesso</div>";
             $this->Resultado = true;

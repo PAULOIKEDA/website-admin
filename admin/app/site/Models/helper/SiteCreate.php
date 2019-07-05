@@ -35,7 +35,7 @@ class SiteCreate extends SiteConn {
     private function getInstrucao() {
 
         $colunas = implode(', ', array_keys($this->Dados));
-        $valores = ':' . implode(', ', array_keys($this->Dados));
+        $valores = ':' . implode(', :', array_keys($this->Dados));
         $this->Query = "INSERT INTO {$this->Tabela} ({$colunas}) VALUES ({$valores})";
         echo $this->Query;
 
