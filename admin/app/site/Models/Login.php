@@ -65,22 +65,31 @@ class Login {
     }
 
     public function cadastrarUsuario(array $Dados) {
-
         $this->Dados = $Dados;
         $this->validarDados();       
         if($this->Resultado) {
-            $this->Dados['senha'] = password_hash($this->Dados['senha'], PASSWORD_DEFAULT);
-            $this->Dados['conf_email'] = 2;
-            $this->Dados['niveis_acesso_id'] = 5;
-            $this->Dados['situacao_usuario_id'] = 2;
-            $this->Dados['created'] = date('Y-m-d H:i:s');
-            $this->inserir();
+            $validarEmail = new helper\SiteEmail();
+            $validarEmail->validarEmail($this->Dados['email']);
+            $validarEmailUnico = new helper\SiteEmailUnico();
+            $validarEmailUnico->validarEmailUnico($this->Dados['email']);
+            $validarUsuario = new helper\SiteValidarUsuario();
+            $validarUsuario->validarUsuario($this->Dados['usuario']);
+            if ($validarEmail->getResultado() && $validarEmailUnico->getResultado() && $validarUsuario->getResultado()) {
+                $this->Dados['senha'] = password_hash($this->Dados['senha'], PASSWORD_DEFAULT);
+                $this->Dados['conf_email'] = 2;
+                $this->Dados['niveis_acesso_id'] = 1;
+                $this->Dados['situacao_usuario_id'] = 2;
+                $this->Dados['created'] = date('Y-m-d H:i:s');
+                $this->inserir();
+            } else {
+                $this->Resultado = false;
+            }
+
         }
 
     }
 
     private function inserir() {
-
         $cadastrarUsuario = new \Site\Models\helper\SiteCreate();       
         $cadastrarUsuario->exeCreate('adm_usuarios', $this->Dados);   
         if($cadastrarUsuario->getResultado()) {
